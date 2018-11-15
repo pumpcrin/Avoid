@@ -6,13 +6,14 @@ abstract class Scene {
 class Title extends Scene {
   void setup() {
     timeCount = 180; //ゲーム時間をセット
+    _timeCount = timeCount;
     gameClear = true;
     
     //残らないように
     fill(0);
     rect(0, 0, width, height);
     
-    textAlign(CENTER);
+    textAlign(CENTER,BASELINE);
   }
 
   void draw() {
@@ -20,14 +21,7 @@ class Title extends Scene {
     textSize(200);
     text("Avoid", width/2, height/5*2);
     
-    //点滅させる
-    if (frameCount / 30 % 2 == 0) { // frameCount % 2 == 0 だと速すぎ
-      fill(0);
-    }else{
-      fill(255);
-    }
-    textSize(75);
-    text("Press spece key.", width/2, height/5*3);
+    pressanyKey("Space",width/2,height/2);
   }
 }
 
@@ -58,14 +52,8 @@ class Result extends Scene {
     rect(0, 0, width, height);
     fill(255);
     textAlign(CENTER,TOP);
-    text("Result", width/2, 0);
-  }
-}
-
-class GameOver extends Scene {
-  void setup() {
-  }
-  
-  void draw() {
+    text("Result", width/2, 30);
+    
+    result();
   }
 }

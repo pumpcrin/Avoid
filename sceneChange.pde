@@ -3,7 +3,7 @@ void sceneChange() {
     if (key == ' ')  scene = new Game();
   } else if (scene instanceof Game && timeCount == 0) {
     if (key == ' ')  scene = new Result();
-  } else if (scene instanceof Result || scene instanceof GameOver){
+  } else if (scene instanceof Result){
     if (key == ' ')  scene = new Title();
   }
 }
