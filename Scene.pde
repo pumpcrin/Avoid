@@ -7,6 +7,7 @@ class Title extends Scene {
   void setup() {
     timeCount = 180; //ゲーム時間をセット
     _timeCount = timeCount;
+    gameMode = 0;
     gameClear = true;
     
     //残らないように
@@ -28,6 +29,7 @@ class Title extends Scene {
 class Game extends Scene {
   void setup() {
     //残らないように
+    gameMode = 1;
     fill(0);
     rect(0, 0, width, height);
   }
@@ -36,8 +38,12 @@ class Game extends Scene {
     timeCounter(); //左上にカウンター表示
     mine(10);
     
-    if(!(gameClear)){
+    if(gameMode == 1 && timeCount == 0)  gameMode = 2; //Result
+    
+    if(!(gameMode == 1) && !(gameClear)){
       textAlign(CENTER,CENTER);
+      textSize(75);
+      fill(255);
       text("GAMEOVER...",width/2,height/2);
     }
   }
@@ -45,15 +51,11 @@ class Game extends Scene {
 
 class Result extends Scene {
   void setup() {
+    fill(0);
+    rect(0, 0, width, height);
   }
 
   void draw() {
-    fill(0);
-    rect(0, 0, width, height);
-    fill(255);
-    textAlign(CENTER,TOP);
-    text("Result", width/2, 30);
-    
     result();
   }
 }
