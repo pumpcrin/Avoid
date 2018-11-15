@@ -36,10 +36,10 @@ class Game extends Scene {
 
   void draw() {
     timeCounter(); //左上にカウンター表示
-    mine(10);
-    
+    mine(10); //自機生成
+    gameClear = false;
     if(gameMode == 1 && timeCount == 0)  gameMode = 2; //Result
-    
+    if(!(gameClear))  gameMode = 2;
     if(!(gameMode == 1) && !(gameClear)){
       textAlign(CENTER,CENTER);
       textSize(75);
