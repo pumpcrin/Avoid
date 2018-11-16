@@ -1,10 +1,16 @@
+//シーン
 Scene scene = new Title();
 
+//以下，システム関連宣言
 float timeCount;
 float _timeCount; //timeCountの初期値格納変数
 int gameMode; //0=Title, 1=Gaming, 2=Result
 boolean gameOver; //false=GameClear, true=GameOver
 boolean debug = false;
+
+//以下，エフェクト関連宣言
+FireParticleSystem Fire;
+
 
 void setup() {
   fullScreen();
@@ -14,12 +20,14 @@ void setup() {
 }
 
 void draw() {
+  background(0);
   scene.draw();
   debug();
 }
 
 void keyPressed() {
   sceneChange();
+  FireSetup(mouseX,mouseY);
 }
 
 void keyReleased(){
