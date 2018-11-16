@@ -9,9 +9,6 @@ class Title extends Scene {
   }
 
   void draw() {
-    fill(0);
-    rect(0, 0, width, height);
-    
     textAlign(CENTER,BASELINE);
     fill(244, 119, 66);
     textSize(200);
@@ -27,16 +24,10 @@ class Game extends Scene {
     _timeCount = timeCount;
     gameOver = false;
     
-    //残らないように
     gameMode = 1;
-    fill(0);
-    rect(0, 0, width, height);
   }
 
   void draw() {
-    //残らないように
-    fill(0);
-    rect(0, 0, width, height);
     timeCounter(); //左上にカウンター表示
     mine(10); //自機生成
 
@@ -47,6 +38,7 @@ class Game extends Scene {
       textSize(75);
       fill(255);
       text("GAMEOVER...",width/2,height/2);
+      Fire();
     }
   }
 }
@@ -57,8 +49,6 @@ class Result extends Scene {
   }
 
   void draw() {
-    fill(0);
-    rect(0, 0, width, height);
     result();
   }
 }
