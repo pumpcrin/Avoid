@@ -25,7 +25,7 @@ class Game extends Scene {
   void setup() {
     timeCount = 180; //ゲーム時間をセット
     _timeCount = timeCount;
-    gameClear = true;
+    gameOver = false;
     
     //残らないように
     gameMode = 1;
@@ -41,8 +41,8 @@ class Game extends Scene {
     mine(10); //自機生成
 
     if(gameMode == 1 && timeCount == 0)  gameMode = 2; //Result
-    if(!(gameClear))  gameMode = 2;
-    if(!(gameMode == 1) && !(gameClear)){
+    if(gameOver)  gameMode = 2;
+    if(!(gameMode == 1) && gameOver){
       textAlign(CENTER,CENTER);
       textSize(75);
       fill(255);

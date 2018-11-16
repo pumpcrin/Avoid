@@ -15,7 +15,7 @@ void result(){
   text("Score : " + score, width/2, 250);
   text("Time : "+ time/60 + " sec.", width/2, 350);
   
-  if(gameClear) {
+  if(!(gameOver)) {
     textSize(110);
     text("Congratulation!!!", width/2, 550);
   }else{

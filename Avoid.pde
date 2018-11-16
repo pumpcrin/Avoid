@@ -3,7 +3,7 @@ Scene scene = new Title();
 float timeCount;
 float _timeCount; //timeCountの初期値格納変数
 int gameMode; //0=Title, 1=Gaming, 2=Result
-boolean gameClear; //true=GameClear, false=GameOver
+boolean gameOver; //false=GameClear, true=GameOver
 boolean debug = false;
 
 void setup() {
@@ -24,7 +24,7 @@ void keyPressed() {
 
 void keyReleased(){
   if(key == 'D')  debug = !(debug);
-  else if((key == ENTER) && (debug))  gameClear = !(gameClear);
+  else if((key == ENTER) && (debug))  gameOver = !(gameOver);
 }
 
 
@@ -34,7 +34,7 @@ void debug(){
     fill(255);
     textSize(100);
     text("DEBUG MODE is Available.",0,height-300);
-    text("gameClear = "+gameClear,0,height-200);
+    text("gameOver = "+gameOver,0,height-200);
     text("gameMode = "+gameMode,0,height-100);
     text("timeCount = "+timeCount,0,height);
   }
