@@ -2,9 +2,9 @@ Scene scene = new Title();
 
 float timeCount;
 float _timeCount; //timeCountの初期値格納変数
-int gameMode; //0=Title, 1=Gaming, 3=Result
+int gameMode; //0=Title, 1=Gaming, 2=Result
 boolean gameClear; //true=GameClear, false=GameOver
-boolean debug =  false;
+boolean debug = false;
 
 void setup() {
   fullScreen();
@@ -14,21 +14,28 @@ void setup() {
 }
 
 void draw() {
-  scene.setup();
   scene.draw();
+  debug();
 }
 
 void keyPressed() {
-  if(key == '1')  debug();
-  else  sceneChange();
+  sceneChange();
 }
 
+void keyReleased(){
+  if(key == 'D')  debug = !(debug);
+  else if((key == ENTER) && (debug))  gameClear = !(gameClear);
+}
+
+
 void debug(){
-  debug = !(debug);
-  textAlign(LEFT,BOTTOM);
-  fill(255);
-  textSize(100);
-  text("DEBUG MODE is Available.",0,height-200);
-  text("gameClear = "+gameClear,0,height-100);
-  text("gameMode = "+gameMode,0,height);
+  if(debug){
+    textAlign(LEFT,BOTTOM);
+    fill(255);
+    textSize(100);
+    text("DEBUG MODE is Available.",0,height-300);
+    text("gameClear = "+gameClear,0,height-200);
+    text("gameMode = "+gameMode,0,height-100);
+    text("timeCount = "+timeCount,0,height);
+  }
 }

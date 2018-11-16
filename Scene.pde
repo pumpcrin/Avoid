@@ -5,19 +5,14 @@ abstract class Scene {
 
 class Title extends Scene {
   void setup() {
-    timeCount = 180; //ゲーム時間をセット
-    _timeCount = timeCount;
     gameMode = 0;
-    gameClear = true;
-    
-    //残らないように
+  }
+
+  void draw() {
     fill(0);
     rect(0, 0, width, height);
     
     textAlign(CENTER,BASELINE);
-  }
-
-  void draw() {
     fill(244, 119, 66);
     textSize(200);
     text("Avoid", width/2, height/5*2);
@@ -28,6 +23,10 @@ class Title extends Scene {
 
 class Game extends Scene {
   void setup() {
+    timeCount = 180; //ゲーム時間をセット
+    _timeCount = timeCount;
+    gameClear = true;
+    
     //残らないように
     gameMode = 1;
     fill(0);
@@ -35,9 +34,12 @@ class Game extends Scene {
   }
 
   void draw() {
+    //残らないように
+    fill(0);
+    rect(0, 0, width, height);
     timeCounter(); //左上にカウンター表示
     mine(10); //自機生成
-    gameClear = false;
+
     if(gameMode == 1 && timeCount == 0)  gameMode = 2; //Result
     if(!(gameClear))  gameMode = 2;
     if(!(gameMode == 1) && !(gameClear)){
@@ -51,11 +53,12 @@ class Game extends Scene {
 
 class Result extends Scene {
   void setup() {
-    fill(0);
-    rect(0, 0, width, height);
+    gameMode = 2;
   }
 
   void draw() {
+    fill(0);
+    rect(0, 0, width, height);
     result();
   }
 }
