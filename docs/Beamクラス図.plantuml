@@ -1,0 +1,20 @@
+class BeamManager{
+    beams : ArrayList<Beam>
+}
+
+class Beam{
+    start : PVector
+    end : PVector
+}
+
+class Global{
+    beMane : BeamManager
+    boss : Boss
+}
+note bottom
+グローバル変数を書くために
+この図内に作ったクラス
+実際は存在しない
+end note
+
+BeamManager --> Beam
