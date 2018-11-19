@@ -1,6 +1,9 @@
 //シーン
 Scene scene = new Title();
 
+//プレイヤー
+Player player = new Player();
+
 //以下，システム関連宣言
 float timeCount;
 float _timeCount; //timeCountの初期値格納変数
