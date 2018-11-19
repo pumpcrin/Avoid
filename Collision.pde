@@ -20,7 +20,7 @@ class CollisionManager{
       // Bossとビームのあたり判定
       PVector sub = PVector.sub(beam.start, boss.loc);
       if(sub.mag() <= boss.r){
-        //PVector collidePoint = PVector.sub(;
+        PVector collidePoint = getCollidePoint(beam.start, beam.end, boss.loc, boss.r);
         //holder.getEvent(CollisionTypes.Beam2Boss).setValue(collidePoint);
         
         beam.isAbsorbed = true;
@@ -45,7 +45,7 @@ class CoEventHolder{
   }
 }
 
-
+//円と線分のあたり判定
 boolean LineHitCircle(PVector start, PVector end, PVector circleCenter, int r){
   //線分の両端の内側にいるなら、どちらかの内積は負
   PVector start2circle = PVector.sub(circleCenter, start);
@@ -66,28 +66,19 @@ boolean LineHitCircle(PVector start, PVector end, PVector circleCenter, int r){
   return (r >= dist);
 }
 
-PVector getCollisionPoint(PVector start, PVector v, PVector circleCenter, int r){
+
+//等速で移動する線分と固定された円の衝突する点を算出（連立方程式使用）
+PVector getCollidePoint(PVector start, PVector v, PVector circleCenter, int r){
   
-  return start;
+  //解の公式使用
+  double a = v.magSq();
+  double b = v.x*(start.x - circleCenter.x) + v.y*(start.y - circleCenter.y);
+  double c = start.x*start.x + start.y*start.y + circleCenter.x*circleCenter.x + circleCenter.y*circleCenter.y - 2*(start.x*circleCenter.x + start.y*circleCenter.y) - r*r;
+  
+  double d = sqrt((float)(b*b - a*c));
+  double t = (-b - d) / a;
+  
+  PVector collidePoint = PVector.add(start, PVector.mult(v, (float)t));
+  
+  return collidePoint;
 }
-
-
-
-/*
-//直線と円の当たり判定
-boolean LineHitCircle(double x1,double y1,double x2,double y2,double p,double q,int r){
-  boolean lflag;
-  
-  if(x1 != x2){
-    double a = y2-y1;
-    double b = x1-x2;
-    double c = x2*y1-x1*y2;
-    double d = (fabs(a*p+b*q+c)/(sqrt(a*a+b*b)));
-    if(r<=d)  lflag = true;
-    else      lflag = false;
-  }
-  
-  return lflag;
-}
-
-*/
