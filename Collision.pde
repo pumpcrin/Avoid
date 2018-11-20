@@ -18,10 +18,12 @@ class CollisionManager{
       Beam beam = beMane.beams.get(i);
       
       // Bossとビームのあたり判定
-      PVector sub = PVector.sub(beam.start, boss.loc);
-      if(sub.mag() <= boss.r){
-        PVector collidePoint = getCollidePoint(beam.start, beam.end, boss.loc, boss.r);
-        //holder.getEvent(CollisionTypes.Beam2Boss).setValue(collidePoint);
+      PVector start_after = PVector.add(beam.start, beam.v);
+      PVector end_after = PVector.add(beam.end, beam.v);
+      
+      if(!beam.isAbsorbed && LineHitCircle(start_after, end_after, boss.loc, boss.r)){
+        PVector collidePoint = getCollidePoint(beam.start, beam.v, boss.loc, boss.r);
+        holder.getEvent(CollisionTypes.Beam2Boss).setValue(collidePoint);
         
         beam.isAbsorbed = true;
       }
@@ -77,10 +79,6 @@ PVector getCollidePoint(PVector start, PVector v, PVector circleCenter, int r){
   
   double d = sqrt((float)(b*b - a*c));
   double t = (-b - d) / a;
-  
-  if(t < 0){
-    println("dist: "+dist(start.x, start.y, circleCenter.x, circleCenter.y)+"\tstartDist: "+dist(startPoint_test2.x, startPoint_test2.y, circleCenter.x, circleCenter.y));
-  }
   
   PVector collidePoint = PVector.add(start, PVector.mult(v, (float)t));
   
