@@ -27,6 +27,10 @@ class CollisionManager{
         
         beam.isAbsorbed = true;
       }
+      
+      //Playerとビームのあたり判定
+      if(!gameOver && LineHitCircle(beam.start, beam.end, player.loc, (int)player.R))
+        holder.getEvent(CollisionTypes.Beam2Player).setValue(player.loc);
     }
   }
   

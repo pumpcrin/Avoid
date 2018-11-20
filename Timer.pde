@@ -13,7 +13,6 @@ class TimerHolder{
     for(int i = 0; i < timers.size(); i++){
       Timer timer = timers.get(i);
       if(timer.isDispose){
-        println("timer disposed");
         timers.remove(i);
         i--;
       }
@@ -23,7 +22,6 @@ class TimerHolder{
   void setTimer(float timeLimit, IEvent func){
     
     timers.add(new Timer(timeLimit, func));
-    println("timer set");
   }
   
 }

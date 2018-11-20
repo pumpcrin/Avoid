@@ -52,9 +52,9 @@ class Boss{
       public void action(){
         holdBeams--;
         
-        PVector v = PVector.sub(new PVector(player.X, player.Y), loc).setMag(15);
+        PVector v = PVector.sub(player.loc, loc).setMag(15);
         PVector start = PVector.add(loc, v.copy().setMag(r));
-        println("loc: "+loc);
+        
         beMane.beams.add(new Beam(start, v));
       }
     };
