@@ -4,7 +4,6 @@ class Boss{
   int r;
   
   private int holdBeams;
-  private boolean isAbsorbing;
   
   Boss(PVector _loc){
     loc = _loc.copy();
@@ -21,20 +20,11 @@ class Boss{
   }
   
   void update(){
-    checkCollision();
     draw();
   }
   
   void draw(){
     fill(255);
     ellipse(loc.x, loc.y, r*2, r*2);
-  }
-  
-  void checkCollision(){
-    
-  }
-  
-  void release(){
-    
   }
 }
