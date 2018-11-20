@@ -1,10 +1,12 @@
 //シーン
 Scene scene = new Title();
 
-//プレイヤー
+//以下，システム関連宣言
 Player player = new Player();
 
-//以下，システム関連宣言
+PFont UIFont_Bold;
+PFont UIFont_semiBold;
+
 float timeCount;
 float _timeCount; //timeCountの初期値格納変数
 int gameMode; //0=Title, 1=Gaming, 2=Result
@@ -16,6 +18,9 @@ FireParticleSystem Fire;
 
 
 void setup() {
+  UIFont_Bold = loadFont("InterUI-Bold-99.vlw");
+  UIFont_semiBold = loadFont("InterUI-SemiBold-99.vlw");
+  
   fullScreen();
   background(0);
   frameRate(60);
@@ -41,6 +46,7 @@ void keyReleased(){
 
 void debug(){
   if(debug){
+    textFont(UIFont_semiBold);
     textAlign(LEFT,BOTTOM);
     fill(255);
     textSize(100);
