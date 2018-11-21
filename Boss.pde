@@ -11,12 +11,12 @@ class Boss{
     loc = _loc.copy();
     r = 100;
     
-    coMane.holder.getEvent(CollisionTypes.Beam2Boss).setEvent(
+    /*coMane.holder.getEvent(CollisionTypes.Beam2Boss).setEvent(
       new IEventT<PVector>(){
         void action(PVector p){
           finishAbsorb(p);
         }
-      });
+      });*/
       
     collidePoint_debug = new PVector(-1, -1);
     
@@ -41,7 +41,7 @@ class Boss{
     
     fill(0, 134, 255);
     textSize(50);
-    text(holdBeams, boss.loc.x, boss.loc.y);
+    //text(holdBeams, boss.loc.x, boss.loc.y);
   }
   
   void finishAbsorb(PVector p){
@@ -55,10 +55,10 @@ class Boss{
         PVector v = PVector.sub(player.loc, loc).setMag(15);
         PVector start = PVector.add(loc, v.copy().setMag(r));
         
-        beMane.beams.add(new Beam(start, v));
+        //beMane.beams.add(new Beam(start, v));
       }
     };
     
-    th.setTimer(0.7, e);
+    //th.setTimer(0.7, e);
   }
 }

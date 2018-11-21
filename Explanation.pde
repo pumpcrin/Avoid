@@ -11,6 +11,10 @@ void Explanation(){
   textSize(80);
   text("つぎつぎととんでくるビームをよけよう",width/2,175);
   
+  textSize(50);
+  text("ビームはがめんがいからとんでくるぞ",width/4,height/5*1.5);
+  text("ボスはきょうりょくなこうげきをしてくるぞ",width/4*3,height/5*1.5);
+  
   textAlign(RIGHT,BOTTOM);
   brink(0);
   textFont(UIFont_semiBold);
