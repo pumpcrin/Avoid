@@ -10,13 +10,6 @@ class Boss{
   Boss(PVector _loc){
     loc = _loc.copy();
     r = 100;
-<<<<<<< HEAD
-  
-    /*coMane.holder.getEvent(CollisionTypes.Beam2Boss).setEvent(
-      new IEventT<PVector>(){
-        void action(PVector p){println("Collision by: "+p);}
-      });*/
-=======
     
     coMane.holder.getEvent(CollisionTypes.Beam2Boss).setEvent(
       new IEventT<PVector>(){
@@ -28,7 +21,6 @@ class Boss{
     collidePoint_debug = new PVector(-1, -1);
     
     holdBeams = 0;
->>>>>>> e2b863d2caea452af75b7faa8aa71ab3d7b885d1
   }
   
   Boss(int x, int y){
