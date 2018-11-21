@@ -6,7 +6,7 @@ void result(){
   
   textFont(UIFont_Bold);
   textSize(100);
-  fill(255);
+  fill(244, 69, 66);
   textAlign(CENTER,TOP);
   text("Result", width/2, 100);
   

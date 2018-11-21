@@ -14,7 +14,7 @@ class CollisionManager{
   
   private void check(){
     
-    for(int i = 0; i < beMane.beams.size(); i++){
+    /*for(int i = 0; i < beMane.beams.size(); i++){
       Beam beam = beMane.beams.get(i);
       
       // Bossとビームのあたり判定
@@ -25,7 +25,7 @@ class CollisionManager{
         
         beam.isAbsorbed = true;
       }
-    }
+    }*/
   }
   
 }

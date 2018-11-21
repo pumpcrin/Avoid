@@ -1,6 +1,11 @@
 void sceneChange() {
   if (scene instanceof Title) {
     if (key == ' '){
+      scene = new explanation();
+      scene.setup();
+    }
+  } else if (scene instanceof explanation){
+    if(key == ' '){
       scene = new Game();
       scene.setup();
     }

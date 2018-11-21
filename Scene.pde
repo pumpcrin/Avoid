@@ -11,11 +11,21 @@ class Title extends Scene {
   void draw() {
     textFont(UIFont_Bold);
     textAlign(CENTER,BASELINE);
-    fill(244, 119, 66);
+    fill(244, 69, 66);
     textSize(200);
     text("Avoid", width/2, height/5*2);
     
     pressanyKey("Space",width/2,height/2);
+  }
+}
+
+class explanation extends Scene {
+  void setup(){
+    
+  }
+  
+  void draw(){
+    Explanation();
   }
 }
 
@@ -34,12 +44,12 @@ class Game extends Scene {
     if(gameMode == 1 && timeCount == 0)  gameMode = 2; //Result
     if(gameOver)  gameMode = 2;
     if(!(gameMode == 1) && gameOver){
+      Fire();
       textFont(UIFont_Bold);
       textAlign(CENTER,CENTER);
       textSize(75);
       fill(255);
       text("GAMEOVER...",width/2,height/2);
-      Fire();
     }
     
     timeCounter(); //左上にカウンター表示

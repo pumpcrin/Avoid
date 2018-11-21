@@ -6,6 +6,7 @@ void timeCounter(){
   }else{
     fill(255,0,0); //RED
   }
+  textFont(UIFont_Bold);
   textAlign(LEFT,TOP);
   textSize(75);
   text(timeCount/60,0,0);
