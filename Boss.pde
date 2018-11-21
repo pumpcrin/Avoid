@@ -2,18 +2,33 @@ class Boss{
   
   PVector loc;
   int r;
-
+  
+  PVector collidePoint_debug;
+  
   private int holdBeams;
-  private boolean isAbsorbing;
-
+  
   Boss(PVector _loc){
     loc = _loc.copy();
     r = 100;
+<<<<<<< HEAD
   
     /*coMane.holder.getEvent(CollisionTypes.Beam2Boss).setEvent(
       new IEventT<PVector>(){
         void action(PVector p){println("Collision by: "+p);}
       });*/
+=======
+    
+    coMane.holder.getEvent(CollisionTypes.Beam2Boss).setEvent(
+      new IEventT<PVector>(){
+        void action(PVector p){
+          finishAbsorb(p);
+        }
+      });
+      
+    collidePoint_debug = new PVector(-1, -1);
+    
+    holdBeams = 0;
+>>>>>>> e2b863d2caea452af75b7faa8aa71ab3d7b885d1
   }
   
   Boss(int x, int y){
@@ -21,20 +36,37 @@ class Boss{
   }
   
   void update(){
-    checkCollision();
     draw();
   }
   
   void draw(){
     fill(255);
     ellipse(loc.x, loc.y, r*2, r*2);
+    
+    fill(255, 134, 0);
+    if(collidePoint_debug.x != -1)
+      ellipse(collidePoint_debug.x, collidePoint_debug.y, 10, 10);
+    
+    fill(0, 134, 255);
+    textSize(50);
+    text(holdBeams, boss.loc.x, boss.loc.y);
   }
   
-  void checkCollision(){
+  void finishAbsorb(PVector p){
+    collidePoint_debug = p.copy();
+    holdBeams++;
     
-  }
-  
-  void release(){
+    IEvent e = new IEvent(){
+      public void action(){
+        holdBeams--;
+        
+        PVector v = PVector.sub(player.loc, loc).setMag(15);
+        PVector start = PVector.add(loc, v.copy().setMag(r));
+        
+        beMane.beams.add(new Beam(start, v));
+      }
+    };
     
+    th.setTimer(0.7, e);
   }
 }

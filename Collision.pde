@@ -18,14 +18,24 @@ class CollisionManager{
       Beam beam = beMane.beams.get(i);
       
       // Bossとビームのあたり判定
-      PVector sub = PVector.sub(beam.start, boss.loc);
-      if(sub.mag() <= boss.r){
-        PVector collidePoint = getCollidePoint(beam.start, beam.end, boss.loc, boss.r);
-        //holder.getEvent(CollisionTypes.Beam2Boss).setValue(collidePoint);
+      PVector start_after = PVector.add(beam.start, beam.v);
+      PVector end_after = PVector.add(beam.end, beam.v);
+      
+      if(!beam.isAbsorbed && LineHitCircle(start_after, end_after, boss.loc, boss.r)){
+        PVector collidePoint = getCollidePoint(beam.start, beam.v, boss.loc, boss.r);
+        holder.getEvent(CollisionTypes.Beam2Boss).setValue(collidePoint);
         
         beam.isAbsorbed = true;
       }
+<<<<<<< HEAD
     }*/
+=======
+      
+      //Playerとビームのあたり判定
+      if(!gameOver && LineHitCircle(beam.start, beam.end, player.loc, (int)player.R))
+        holder.getEvent(CollisionTypes.Beam2Player).setValue(player.loc);
+    }
+>>>>>>> e2b863d2caea452af75b7faa8aa71ab3d7b885d1
   }
   
 }
