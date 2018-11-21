@@ -13,9 +13,9 @@ class Title extends Scene {
     textAlign(CENTER,BASELINE);
     fill(244, 69, 66);
     textSize(200);
-    text("Avoid", width/2, height/5*2);
+    text("Avoid", width/2, height/2-50);
     
-    pressanyKey("Space",width/2,height/2);
+    pressanyKey("Space",width/2,height/2+70);
   }
 }
 

@@ -20,8 +20,8 @@ FireParticleSystem Fire;
 
 void setup() {
   UIFont_Bold = loadFont("Blanka-Regular-250.vlw");
-  UIFont_semiBold = loadFont("InterUI-SemiBold-99.vlw");
-  Japanese = loadFont("851H-kktt-99.vlw");
+  UIFont_semiBold = loadFont("Blanka-Regular-250.vlw");
+  Japanese = loadFont("851H-kktt-100.vlw");
   
   fullScreen();
   background(0);
