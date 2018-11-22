@@ -5,7 +5,7 @@ void result(){
   score = (time * time)/ 2 * 32.024;
   
   textFont(UIFont_Bold);
-  textSize(100);
+  textSize(150);
   fill(244, 69, 66);
   textAlign(CENTER,TOP);
   text("Result", width/2, 100);

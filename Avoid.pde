@@ -3,6 +3,7 @@ Scene scene = new Title();
 
 //以下，システム関連宣言
 Player player = new Player();
+boolean nowFadeout = false;
 
 PFont UIFont_Bold;
 PFont UIFont_semiBold;
@@ -24,14 +25,18 @@ void setup() {
   Japanese = loadFont("851H-kktt-100.vlw");
   
   fullScreen();
-  background(0);
+  //background(0);
   frameRate(60);
   smooth();
 }
 
 void draw() {
   background(0);
-  scene.draw();
+  if(nowFadeout){
+    fadeOut(0,0,width,height);
+  }else{
+    scene.draw();
+  }
   debug();
 }
 
@@ -51,10 +56,11 @@ void debug(){
     textFont(UIFont_semiBold);
     textAlign(LEFT,BOTTOM);
     fill(255);
-    textSize(100);
-    text("DEBUG MODE is Available.",0,height-300);
+    textSize(50);
+    text("DEBUG MODE is Available.",0,height-250);
     text("gameOver = "+gameOver,0,height-200);
-    text("gameMode = "+gameMode,0,height-100);
-    text("timeCount = "+timeCount,0,height);
+    text("gameMode = "+gameMode,0,height-150);
+    text("timeCount = "+timeCount,0,height-100);
+    text("FPS = "+int(frameRate),0,height);
   }
 }

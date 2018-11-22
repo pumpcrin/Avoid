@@ -15,6 +15,24 @@ void Explanation(){
   text("ビームはがめんがいからとんでくるぞ",width/4,height/5*1.5);
   text("ボスはきょうりょくなこうげきをしてくるぞ",width/4*3,height/5*1.5);
   
+  noFill();
+  stroke(255,1000);
+  rectMode(CENTER);
+  rect(width/4,height/5*3,800,400);
+  rect(width/4*3,height/5*3,800,400);
+  
+  
+  /////////////////////ここから四角の中でビームとか飛ばす/////////////////////////
+  
+  
+  
+  
+  
+  
+  
+  //////////////////////////////ここまで//////////////////////////////////////
+  
+  
   textAlign(RIGHT,BOTTOM);
   brink(0);
   textFont(UIFont_semiBold);

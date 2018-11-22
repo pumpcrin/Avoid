@@ -39,7 +39,7 @@ class Game extends Scene {
   }
 
   void draw() {
-    player.mine(10); //自機生成
+    player.mine(15); //自機生成
 
     if(gameMode == 1 && timeCount == 0)  gameMode = 2; //Result
     if(gameOver)  gameMode = 2;

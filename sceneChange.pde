@@ -1,23 +1,20 @@
 void sceneChange() {
-  if (scene instanceof Title) {
-    if (key == ' '){
-      scene = new explanation();
-      scene.setup();
+  char _key = key; //keyが押された時点でのkeyを保存するバッファ
+  
+  if (_key == ' '){
+    nowFadeout = true;
+    if (scene instanceof Title) {
+        scene = new explanation();
+        scene.setup();
+    } else if (scene instanceof explanation){
+        scene = new Game();
+        scene.setup();
+    } else if (scene instanceof Game && !(gameMode == 1)) {
+        scene = new Result();
+        scene.setup();
+    } else if (scene instanceof Result){
+        scene = new Title();
+        scene.setup();
     }
-  } else if (scene instanceof explanation){
-    if(key == ' '){
-      scene = new Game();
-      scene.setup();
-    }
-  } else if (scene instanceof Game && !(gameMode == 1)) {
-    if (key == ' '){
-      scene = new Result();
-      scene.setup();
-    }
-  }else if (scene instanceof Result){
-    if (key == ' '){
-      scene = new Title();
-      scene.setup();
-    }
-  } 
+  }
 }
