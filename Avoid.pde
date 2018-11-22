@@ -61,6 +61,7 @@ void debug(){
     text("gameOver = "+gameOver,0,height-200);
     text("gameMode = "+gameMode,0,height-150);
     text("timeCount = "+timeCount,0,height-100);
+    text("Scene = "+scene,0,height-50);
     text("FPS = "+int(frameRate),0,height);
   }
 }
