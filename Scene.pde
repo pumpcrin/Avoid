@@ -37,7 +37,7 @@ class Game extends Scene {
     boss = new Boss();
     player = new Player();
     
-    timeCount = 15 * frameRate; //ゲーム時間をセット
+    timeCount = 15 * 60; //ゲーム時間をセット(フレーム単位)
     _timeCount = timeCount;
     gameOver = false;
     
