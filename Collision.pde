@@ -16,6 +16,7 @@ class CollisionManager{
     
     for(int i = 0; i < BeMane.beams.size(); i++){
       Beam beam = BeMane.beams.get(i);
+      if(!beam.isStandard)  continue;    //Bossの玉ならBossとの判定はしない
       
       // Bossとビームのあたり判定
       PVector start_after = PVector.add(beam.start, beam.v);
