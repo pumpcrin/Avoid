@@ -4,13 +4,13 @@ class Player{
   PVector loc;
   
   Player(){
-    /*coMane.holder.getEvent(CollisionTypes.Beam2Player).setEvent(
+    CoMane.holder.getEvent(CollisionTypes.Beam2Player).setEvent(
       new IEventT<PVector>(){
         void action(PVector p){
           println("gameOver!!");
           gameOver = true;
         }
-      });*/
+      });
   }
   
   void mine(float _R) {

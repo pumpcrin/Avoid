@@ -5,7 +5,7 @@ class BeamManager{
   
   void update(){
     add();
-    println(beams.size(),location);
+    //println(beams.size(),location);
   }
   
   void add(){  

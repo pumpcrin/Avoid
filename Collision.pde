@@ -14,7 +14,7 @@ class CollisionManager{
   
   private void check(){
     
-    /*for(int i = 0; i < BeMane.beams.size(); i++){
+    for(int i = 0; i < BeMane.beams.size(); i++){
       Beam beam = BeMane.beams.get(i);
       
       // Bossとビームのあたり判定
@@ -29,9 +29,10 @@ class CollisionManager{
       }
       
       //Playerとビームのあたり判定
-      if(!gameOver && LineHitCircle(beam.start, beam.end, player.loc, (int)player.R))
+      if(!gameOver && LineHitCircle(beam.start, beam.end, player.loc, (int)player.R)){
         holder.getEvent(CollisionTypes.Beam2Player).setValue(player.loc);
-    }*/
+      }
+    }
   }
   
 }

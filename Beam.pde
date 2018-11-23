@@ -7,7 +7,7 @@ class Beam{
   PVector v ;
   
   boolean isStandard;
-  boolean isAbsorbing;//trueの間吸収されている変数　
+  boolean isAbsorbed;   //trueの間吸収されている変数　
                         //if文のみ作ればよい
     
   //ビームの描写
@@ -16,7 +16,7 @@ class Beam{
     end = new PVector(x-vx*len,y-vy*len);
     v = new PVector(vx,vy);
     isStandard = true;
-  
+    isAbsorbed = false;
     
   }
 

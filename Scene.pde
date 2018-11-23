@@ -31,10 +31,13 @@ class explanation extends Scene {
 
 class Game extends Scene {
   void setup() {
-    
+    CoMane = new CollisionManager();
     BeMane = new BeamManager();
+    TiMane = new TimerHolder();
+    boss = new Boss();
+    player = new Player();
     
-    timeCount = 180; //ゲーム時間をセット
+    timeCount = 15 * frameRate; //ゲーム時間をセット
     _timeCount = timeCount;
     gameOver = false;
     
@@ -42,7 +45,13 @@ class Game extends Scene {
   }
 
   void draw() {
+    TiMane.update();    //タイマーは一番最初
+    
+    BeMane.update();
+    boss.update();
+    
     player.mine(15); //自機生成
+    CoMane.update();    //衝突判定はすべてのオブジェクトを移動させた後
 
     if(gameMode == 1 && timeCount == 0)  gameMode = 2; //Result
     if(gameOver)  gameMode = 2;

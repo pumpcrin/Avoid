@@ -2,8 +2,12 @@
 Scene scene = new Title();
 
 //以下，システム関連宣言
-Player player = new Player();
+Player player;
 BeamManager BeMane;
+CollisionManager CoMane;
+TimerHolder TiMane;
+Boss boss;
+
 boolean nowFadeout = false;
 
 PFont UIFont_Bold;
@@ -25,6 +29,7 @@ void setup() {
   UIFont_semiBold = loadFont("Blanka-Regular-250.vlw");
   Japanese = loadFont("851H-kktt-100.vlw");
   
+  //size(1500, 1000);
   fullScreen();
   background(0);
   frameRate(60);

@@ -11,20 +11,20 @@ class Boss{
     loc = _loc.copy();
     r = 100;
     
-    /*coMane.holder.getEvent(CollisionTypes.Beam2Boss).setEvent(
+    CoMane.holder.getEvent(CollisionTypes.Beam2Boss).setEvent(
       new IEventT<PVector>(){
         void action(PVector p){
           finishAbsorb(p);
         }
-      });*/
+      });
       
     collidePoint_debug = new PVector(-1, -1);
     
     holdBeams = 0;
   }
   
-  Boss(int x, int y){
-    this(new PVector(x, y));
+  Boss(){
+    this(new PVector(width/2, height/2));
   }
   
   void update(){
@@ -32,6 +32,7 @@ class Boss{
   }
   
   void draw(){
+    noStroke();
     fill(255);
     ellipse(loc.x, loc.y, r*2, r*2);
     
@@ -40,8 +41,9 @@ class Boss{
       ellipse(collidePoint_debug.x, collidePoint_debug.y, 10, 10);
     
     fill(0, 134, 255);
-    textSize(50);
-    //text(holdBeams, boss.loc.x, boss.loc.y);
+    textSize(75);
+    textAlign(CENTER, CENTER);
+    text(holdBeams, boss.loc.x, boss.loc.y);
   }
   
   void finishAbsorb(PVector p){
@@ -55,10 +57,10 @@ class Boss{
         PVector v = PVector.sub(player.loc, loc).setMag(15);
         PVector start = PVector.add(loc, v.copy().setMag(r));
         
-        //BeMane.beams.add(new Beam(start, v));
+        BeMane.beams.add(new Beam(start.x, start.y, v.x, v.y, 13));
       }
     };
     
-    //th.setTimer(0.7, e);
+    TiMane.setTimer(0.7, e);
   }
 }

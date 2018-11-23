@@ -17,6 +17,7 @@ void Explanation(){
   
   noFill();
   stroke(255,1000);
+  strokeWeight(1);
   rectMode(CENTER);
   rect(width/4,height/5*3,800,400);
   rect(width/4*3,height/5*3,800,400);
