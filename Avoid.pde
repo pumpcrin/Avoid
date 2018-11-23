@@ -3,6 +3,7 @@ Scene scene = new Title();
 
 //以下，システム関連宣言
 Player player = new Player();
+BeamManager BeMane;
 boolean nowFadeout = false;
 
 PFont UIFont_Bold;

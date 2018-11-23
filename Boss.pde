@@ -55,7 +55,7 @@ class Boss{
         PVector v = PVector.sub(player.loc, loc).setMag(15);
         PVector start = PVector.add(loc, v.copy().setMag(r));
         
-        //beMane.beams.add(new Beam(start, v));
+        //BeMane.beams.add(new Beam(start, v));
       }
     };
     

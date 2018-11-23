@@ -31,6 +31,9 @@ class explanation extends Scene {
 
 class Game extends Scene {
   void setup() {
+    
+    BeMane = new BeamManager();
+    
     timeCount = 180; //ゲーム時間をセット
     _timeCount = timeCount;
     gameOver = false;

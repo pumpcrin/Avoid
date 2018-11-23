@@ -4,15 +4,14 @@ class BeamManager{
   int delay1,delay2,go; //どれくらいの頻度でビームを出すか
   
   void update(){
-  add();
-  println(beams.size(),location);
- 
+    add();
+    println(beams.size(),location);
   }
   
   void add(){  
-     //どの位置からビームがでるか
-       Bemane.location = int(random(0,4));
-      switch(location){
+    //どの位置からビームがでるか
+    BeMane.location = int(random(0,4));
+    switch(location){
      
        case 0 : beams.add(new Beam(random(width),0,random(-4,4),random(3,5),13)); //up
        break;
@@ -29,39 +28,39 @@ class BeamManager{
        default : println("error");
        break; 
      }
-       }
+       //}
    
     
     
     //ビームの表示と移動と削除
     for(int i = 0; i < beams.size();i++){
-    beams.get(i).lines();
-    beams.get(i).move();
-    
-    if(beams.get(i).start.x > width+50 && beams.get(i).end.x > width+50 )
-    {
-      beams.remove(i);
-      i--;
+      beams.get(i).lines();
+      beams.get(i).move();
       
-    }
-    else if(beams.get(i).start.y > height+50 && beams.get(i).end.y > height+50 )
-    {
-      beams.remove(i);
-      i--;
+      if(beams.get(i).start.x > width+50 && beams.get(i).end.x > width+50 )
+      {
+        beams.remove(i);
+        i--;
       
-    } 
-    else if(beams.get(i).start.x < -50 && beams.get(i).end.x < -50 )
-    {
-      beams.remove(i);
-      i--;
+      }
+      else if(beams.get(i).start.y > height+50 && beams.get(i).end.y > height+50 )
+      {
+        beams.remove(i);
+        i--;
+        
+      } 
+      else if(beams.get(i).start.x < -50 && beams.get(i).end.x < -50 )
+      {
+        beams.remove(i);
+        i--;
+        
+      } 
+      else if(beams.get(i).start.y < -50 && beams.get(i).end.y < -50 )
+      {
+        beams.remove(i);
+        i--;
       
-    } 
-    else if(beams.get(i).start.y < -50 && beams.get(i).end.y < -50 )
-    {
-      beams.remove(i);
-      i--;
-      
-    }
+      }
     }
   }
 }

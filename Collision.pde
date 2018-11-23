@@ -14,8 +14,8 @@ class CollisionManager{
   
   private void check(){
     
-    /*for(int i = 0; i < beMane.beams.size(); i++){
-      Beam beam = beMane.beams.get(i);
+    /*for(int i = 0; i < BeMane.beams.size(); i++){
+      Beam beam = BeMane.beams.get(i);
       
       // Bossとビームのあたり判定
       PVector start_after = PVector.add(beam.start, beam.v);
