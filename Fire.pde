@@ -3,8 +3,8 @@ final float lifeSpan_s = 2;
 final int particleSize = 20;
 final float decayRate = 0.1;  //距離1あたりの光の減衰率
 
-void FireSetup(int x, int y){
-  Fire = new FireParticleSystem(new PVector(x, y), color(255, 34, 0, 205));
+void FireSetup(PVector _loc){
+  Fire = new FireParticleSystem(_loc, color(255, 34, 0, 205));
 }
 
 void Fire(){
@@ -13,7 +13,7 @@ void Fire(){
   background(0,100);
   blendMode(ADD);
   
-  if(Fire != null)Fire.update();
+  if(Fire != null)  Fire.update();
   
   blendMode(BLEND);
 }

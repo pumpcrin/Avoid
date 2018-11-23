@@ -53,7 +53,7 @@ void keyPressed() {
   //sceneChange();
   if(key ==  ' '&& !(gameMode == 1))  nowFadeout = true;
   
-  FireSetup(mouseX,mouseY);
+  //FireSetup(mouseX,mouseY);
 }
 
 void keyReleased(){

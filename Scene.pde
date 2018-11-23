@@ -50,11 +50,11 @@ class Game extends Scene {
     BeMane.update();
     boss.update();
     
-    player.mine(15); //自機生成
+    player.mine(7.5); //自機生成
     CoMane.update();    //衝突判定はすべてのオブジェクトを移動させた後
 
     if(gameMode == 1 && timeCount == 0)  gameMode = 2; //Result
-    if(gameOver)  gameMode = 2;
+    if(gameOver)    gameMode = 2;
     if(!(gameMode == 1) && gameOver){
       Fire();
       textFont(UIFont_Bold);
