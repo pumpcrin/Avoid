@@ -37,8 +37,9 @@ class Boss{
     ellipse(loc.x, loc.y, r*2, r*2);
     
     fill(255, 134, 0);
-    if(collidePoint_debug.x != -1)
-      ellipse(collidePoint_debug.x, collidePoint_debug.y, 10, 10);
+    
+    //if(collidePoint_debug.x != -1)
+      //ellipse(collidePoint_debug.x, collidePoint_debug.y, 10, 10);
     
     fill(0, 134, 255);
     textSize(75);

@@ -16,6 +16,12 @@ class CollisionManager{
     
     for(int i = 0; i < BeMane.beams.size(); i++){
       Beam beam = BeMane.beams.get(i);
+      
+      //Playerとビームのあたり判定
+      if(!gameOver && LineHitCircle(beam.start, beam.end, player.loc, (int)player.R)){
+        holder.getEvent(CollisionTypes.Beam2Player).setValue(player.loc);
+      }
+      
       if(!beam.isStandard)  continue;    //Bossの玉ならBossとの判定はしない
       
       // Bossとビームのあたり判定
@@ -27,11 +33,6 @@ class CollisionManager{
         holder.getEvent(CollisionTypes.Beam2Boss).setValue(collidePoint);
         
         beam.isAbsorbed = true;
-      }
-      
-      //Playerとビームのあたり判定
-      if(!gameOver && LineHitCircle(beam.start, beam.end, player.loc, (int)player.R)){
-        holder.getEvent(CollisionTypes.Beam2Player).setValue(player.loc);
       }
     }
   }
