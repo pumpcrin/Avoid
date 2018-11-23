@@ -25,23 +25,28 @@ void setup() {
   Japanese = loadFont("851H-kktt-100.vlw");
   
   fullScreen();
-  //background(0);
+  background(0);
   frameRate(60);
   smooth();
 }
 
 void draw() {
-  background(0);
-  if(nowFadeout){
-    fadeOut(0,0,width,height);
-  }else{
+  if(!(nowFadeout)){
+    background(0);
     scene.draw();
   }
+  
+  if(nowFadeout){
+    fadeOut(0,0,width,height);
+  }
+  
   debug();
 }
 
 void keyPressed() {
-  sceneChange();
+  //sceneChange();
+  if(key ==  ' '&& !(gameMode == 1))  nowFadeout = true;
+  
   FireSetup(mouseX,mouseY);
 }
 

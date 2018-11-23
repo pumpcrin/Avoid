@@ -1,8 +1,9 @@
 void sceneChange() {
-  char _key = key; //keyが押された時点でのkeyを保存するバッファ
+  //char _key = key; //keyが押された時点でのkeyを保存するバッファ
   
-  if (_key == ' '){
-    nowFadeout = true;
+  //if (key == ' '){
+    //nowFadeout = true;
+
     if (scene instanceof Title) {
         scene = new explanation();
         scene.setup();
@@ -16,5 +17,5 @@ void sceneChange() {
         scene = new Title();
         scene.setup();
     }
-  }
+  //}
 }
