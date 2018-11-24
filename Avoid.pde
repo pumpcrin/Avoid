@@ -1,3 +1,7 @@
+import ddf.minim.*;
+Minim minim;
+AudioPlayer Audioplayer;
+
 //シーン
 Scene scene = new Title();
 
@@ -29,11 +33,15 @@ void setup() {
   UIFont_semiBold = loadFont("Blanka-Regular-250.vlw");
   Japanese = loadFont("851H-kktt-100.vlw");
   
+  minim = new Minim(this);
+  
   //size(1500, 1000);
   fullScreen();
   background(0);
   frameRate(60);
   smooth();
+  
+  scene.setup();
 }
 
 void draw() {
@@ -61,6 +69,11 @@ void keyReleased(){
   else if((key == ENTER) && (debug))  gameOver = !(gameOver);
 }
 
+void stop(){
+  if(Audioplayer != null)  Audioplayer.close();
+  minim.stop();
+  super.stop();
+}
 
 void debug(){
   if(debug){
@@ -68,11 +81,12 @@ void debug(){
     textAlign(LEFT,BOTTOM);
     fill(255);
     textSize(50);
-    text("DEBUG MODE is Available.",0,height-250);
-    text("gameOver = "+gameOver,0,height-200);
-    text("gameMode = "+gameMode,0,height-150);
-    text("timeCount = "+timeCount,0,height-100);
-    text("Scene = "+scene,0,height-50);
+    text("DEBUG MODE is Available.",0,height-300);
+    text("gameOver = "+gameOver,0,height-250);
+    text("gameMode = "+gameMode,0,height-200);
+    text("timeCount = "+timeCount,0,height-150);
+    text("Scene = "+scene,0,height-100);
+    //text("BGM = "+Audioplayer,0,height-50);
     text("FPS = "+int(frameRate),0,height);
   }
 }

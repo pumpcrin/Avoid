@@ -6,6 +6,10 @@ abstract class Scene {
 class Title extends Scene {
   void setup() {
     gameMode = 0;
+    
+    if(Audioplayer != null)  Audioplayer.close();
+    Audioplayer = minim.loadFile("title.mp3");
+    Audioplayer.play();
   }
 
   void draw() {
@@ -15,13 +19,16 @@ class Title extends Scene {
     textSize(200);
     text("Avoid", width/2, height/2-50);
     
+    
     pressanyKey("Space",width/2,height/2+70);
   }
 }
 
 class explanation extends Scene {
   void setup(){
-    
+    if(Audioplayer != null)  Audioplayer.close();
+    Audioplayer = minim.loadFile("ex.mp3");
+    Audioplayer.loop();
   }
   
   void draw(){
@@ -36,6 +43,11 @@ class Game extends Scene {
     TiMane = new TimerHolder();
     boss = new Boss();
     player = new Player();
+    
+    //以下，BGM
+    if(Audioplayer != null)  Audioplayer.close();
+    Audioplayer = minim.loadFile("battle"+int(random(2,3))+".mp3");
+    Audioplayer.play();
     
     timeCount = 3 * 60; //ゲーム時間をセット(フレーム単位)
     _timeCount = timeCount;
@@ -71,6 +83,11 @@ class Game extends Scene {
 class Result extends Scene {
   void setup() {
     gameMode = 2;
+    
+    //以下，BGM
+    if(Audioplayer != null)  Audioplayer.close();
+    Audioplayer = minim.loadFile("result.mp3");
+    Audioplayer.loop();
   }
 
   void draw() {
