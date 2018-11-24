@@ -31,28 +31,14 @@ class BeamManager{
     
     //ビームの表示と移動と削除
     for(int i = 0; i < beams.size();i++){
-      beams.get(i).lines();
-      beams.get(i).move();
+      Beam beam = beams.get(i);
+      beam.lines();
+      beam.move();
       
-      if(beams.get(i).start.x > width+50 && beams.get(i).end.x > width+50 )
-      {
-        beams.remove(i);
-        i--;
-      
-      }
-      else if(beams.get(i).start.y > height+50 && beams.get(i).end.y > height+50 )
-      {
-        beams.remove(i);
-        i--;
-        
-      } 
-      else if(beams.get(i).start.x < -50 && beams.get(i).end.x < -50 )
-      {
-        beams.remove(i);
-        i--;
-        
-      } 
-      else if(beams.get(i).start.y < -50 && beams.get(i).end.y < -50 )
+      if((beam.start.x > width+50 && beam.end.x > width+50 ) ||
+          (beam.start.y > height+50 && beam.end.y > height+50 ) ||
+          (beam.start.x < -50 && beam.end.x < -50 ) ||
+          (beam.start.y < -50 && beam.end.y < -50 ))
       {
         beams.remove(i);
         i--;

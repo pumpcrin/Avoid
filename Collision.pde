@@ -18,7 +18,7 @@ class CollisionManager{
       Beam beam = BeMane.beams.get(i);
       
       //Playerとビームのあたり判定
-      if(!gameOver && LineHitCircle(beam.start, beam.end, player.loc, (int)player.R)){
+      if(!gameOver && (gameMode == 1) && LineHitCircle(beam.start, beam.end, player.loc, (int)player.R)){
         holder.getEvent(CollisionTypes.Beam2Player).setValue(player.loc);
       }
       
