@@ -107,14 +107,6 @@ class Charge_Particle{
   }
 }
 
-int[] Color2int(color col){
-  int red = (col >> 16) & 0xFF;
-  int blue = (col >> 8) & 0xFF;
-  int green = col & 0xFF;
-  
-  return new int[]{red, blue, green};
-}
-
 class Charge{
   final int particleAmount = 100;
   
@@ -218,8 +210,8 @@ class Charge{
 
   private void draw() {
     for (int i = 0; i < parts.size(); i++) {
-        parts.get(i).update();
-        parts.get(i).draw();
+      parts.get(i).update();
+      parts.get(i).draw();
     }
   }
 }
