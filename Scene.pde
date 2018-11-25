@@ -49,7 +49,7 @@ class Game extends Scene {
     Audioplayer = minim.loadFile("battle"+int(random(2,3))+".mp3");
     Audioplayer.play();
     
-    timeCount = 3 * 60; //ゲーム時間をセット(フレーム単位)
+    timeCount = Const.TimeLimit * 60; //ゲーム時間をセット(フレーム単位)
     _timeCount = timeCount;
     gameOver = false;
     

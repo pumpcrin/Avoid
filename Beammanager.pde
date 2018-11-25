@@ -42,8 +42,8 @@ class BeamManager{
       {
         beams.remove(i);
         i--;
-      
       }
+      
     }
   }
 }
