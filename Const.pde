@@ -15,4 +15,12 @@ static class Const{
   static color ConstColor(int r, int g, int b){
     return ConstColor(r, g, b, 0xFF);
   }
+  
+  //小数第3位で四捨五入する
+  static double round3(double num){
+    BigDecimal numDecBefore = new BigDecimal(num);
+    BigDecimal numDecAfter = numDecBefore.setScale(2, BigDecimal.ROUND_HALF_UP);
+    double numAfter = numDecAfter.doubleValue();
+    return numAfter;
+  }
 }

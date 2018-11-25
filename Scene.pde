@@ -10,7 +10,7 @@ class Title extends Scene {
     if(Audioplayer != null)  Audioplayer.close();
     Audioplayer = minim.loadFile("title.mp3");
     Audioplayer.play();
-    BGMGain = Audioplayer.getGain() - 10;
+    BGMGain = Audioplayer.getGain() - 20;
     Audioplayer.setGain(BGMGain);
     //Audioplayer.printControls();
     
@@ -35,7 +35,7 @@ class explanation extends Scene {
     if(Audioplayer != null)  Audioplayer.close();
     Audioplayer = minim.loadFile("ex.mp3");
     Audioplayer.loop();
-    BGMGain = Audioplayer.getGain() - 10;
+    BGMGain = Audioplayer.getGain() - 20;
     Audioplayer.setGain(BGMGain);
   }
   
@@ -55,7 +55,7 @@ class Game extends Scene {
     if(Audioplayer != null)  Audioplayer.close();
     Audioplayer = minim.loadFile("battle"+int(random(2,3.9))+".mp3");
     Audioplayer.play();
-    BGMGain = Audioplayer.getGain() - 10;
+    BGMGain = Audioplayer.getGain() - 20;
     Audioplayer.setGain(BGMGain);
     
     timeCount = Const.TimeLimit * 60; //ゲーム時間をセット(フレーム単位)
@@ -102,7 +102,7 @@ class Result extends Scene {
     if(Audioplayer != null)  Audioplayer.close();
     Audioplayer = minim.loadFile("result.mp3");
     Audioplayer.loop();
-    BGMGain = Audioplayer.getGain() - 10;
+    BGMGain = Audioplayer.getGain() - 20;
     Audioplayer.setGain(BGMGain);
   }
 

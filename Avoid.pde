@@ -3,6 +3,8 @@ Minim minim;
 AudioPlayer Audioplayer;
 float BGMGain;
 
+import java.math.*;
+
 //シーン
 Scene scene = new Title();
 

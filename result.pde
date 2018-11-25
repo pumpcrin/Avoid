@@ -1,8 +1,8 @@
 void result(){
-  float score;
-  float time = _timeCount - timeCount;
+  double score;
+  double time = _timeCount - timeCount;
   
-  score = (time * time)/ 2 * 32.024;
+  score = Const.round3(((time * time)/ 2 * 3203.485789908)/5032);
   
   textFont(UIFont_Bold);
   textSize(150);
@@ -15,7 +15,7 @@ void result(){
   textAlign(CENTER,TOP);
   textSize(75);
   text("Score : " + score, width/2, 250);
-  text("Time : "+ time/60 + " sec.", width/2, 350);
+  text("Time : "+ Const.round3(time/60) + " sec.", width/2, 350);
   
   textFont(UIFont_Bold);
   if(!(gameOver)) {
