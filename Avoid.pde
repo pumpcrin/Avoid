@@ -1,6 +1,7 @@
 import ddf.minim.*;
 Minim minim;
 AudioPlayer Audioplayer;
+float BGMGain;
 
 //シーン
 Scene scene = new Title();
@@ -61,7 +62,7 @@ void draw() {
 
 void keyPressed() {
   //sceneChange();
-  if(key ==  ' '&& !(gameMode == 1))  nowFadeout = true;
+  if(key ==  ' '&& gameMode != 1)  nowFadeout = true;
   
   //FireSetup(mouseX,mouseY);
 }
@@ -88,7 +89,7 @@ void debug(){
     text("gameMode = "+gameMode,0,height-200);
     text("timeCount = "+timeCount,0,height-150);
     text("Scene = "+scene,0,height-100);
-    //text("BGM = "+Audioplayer,0,height-50);
+    text("BGM's Gain = "+BGMGain,0,height-50);
     text("FPS = "+int(frameRate),0,height);
   }
 }
