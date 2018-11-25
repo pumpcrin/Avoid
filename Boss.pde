@@ -58,12 +58,16 @@ class Boss{
         PVector v = PVector.sub(player.loc, loc).setMag(15);
         PVector start = PVector.add(loc, v.copy().setMag(r));
         
-        Beam beam = new Beam(start, v, 13, color(255, 20, 134));
+        Beam beam = new Beam(start, v, 13, Const.BossBeamCol);
         beam.isStandard = false;
         BeMane.beams.add(beam);
       }
     };
     
-    TiHolder.setTimer(0.7, e);
+    float s = Charge.fireSpan_s + Charge_Particle.lifeSpan_s;
+    TiHolder.setTimer(s, e);
+    
+    Charge ch = new Charge(p, loc, Const.BossBeamCol);
+    EfHolder.add(ch);
   }
 }

@@ -1,6 +1,7 @@
+//Charge ps;
 
 class Charge_Particle{
-  final float lifeSpan_s = 2;
+  static final float lifeSpan_s = 2;
   
   int particleSize;
 
@@ -65,7 +66,6 @@ class Charge_Particle{
     for(int i = 0; i < 3; i++){
       col[i] = int(baseCol[i] * lifeCounter / (lifeSpan_s * frameRate));
     }
-    
 
     fill(col[0], col[1], col[2]);
     ellipse(loc_now.x, loc_now.y, r, r);
@@ -73,11 +73,11 @@ class Charge_Particle{
 }
 
 class Charge extends ParticleSystem{
-  final int particleAmount = 100;
-  final float fireSpan_s = 3; //fire effect time
+  static final int particleAmount = 100;
+  static final float fireSpan_s = 3; //fire effect time
   
-  PVector loc_h;
-  PVector loc_ell;
+  PVector loc_h;        //bossの中心
+  PVector loc_ell;      //発射点
   PVector loc_end = loc_ell;
   
   float count;
@@ -117,12 +117,12 @@ class Charge extends ParticleSystem{
     //count++などの処理（時間を数える処理）はCharge_Particleクラスにおける元sec++。
     //また、isDisposeをtrueにすると、自動的にエフェクトが消えます
     if (!finish){
-      if(count++ / frameRate < lifetime){
+      if(count++ / frameRate > lifetime){
         finish = true;
         count = 0;
       }
     } else {
-      if(count++ < frameRate * fireSpan_s)
+      if(count++ > frameRate * fireSpan_s)
         isDispose = true;
     }
 
@@ -140,6 +140,7 @@ class Charge extends ParticleSystem{
   private void createParticle(int particleSize,int Range) {
 
     r = dist(loc_h.x, loc_h.y, loc_ell.x, loc_ell.y);
+    
     float impactrange = r + Range;
     
     PVector loc_start;
@@ -186,7 +187,7 @@ class Charge extends ParticleSystem{
   private void draw() {
     
     noStroke();
-    background(0,100);
+    
     blendMode(ADD);
     
     for (int i = 0; i < parts.size(); i++) {

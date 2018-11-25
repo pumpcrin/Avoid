@@ -26,13 +26,13 @@ class Beam{
   }
   
   Beam(float x,float y,float vx,float vy,float len){
-    this(new PVector(x, y), new PVector(vx, vy), len, color(0, 255, 0));
+    this(new PVector(x, y), new PVector(vx, vy), len, Const.StandardBeamCol);
   }
 
   //ビームを生成
   void lines(){
-    noStroke();
     stroke(col);
+    
     strokeWeight(10);
     line(start.x,start.y,end.x,end.y);
   }
