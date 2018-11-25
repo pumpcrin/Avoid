@@ -1,5 +1,11 @@
 static class Const{
   
+  static PFont UIFont_Bold;
+  static PFont UIFont_semiBold;
+  static PFont Japanese;
+  static boolean debug = false;
+  
+  
   static final int TimeLimit = 15;
   
   

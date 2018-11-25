@@ -1,6 +1,6 @@
 void pressanyKey(String Key, int x, int y){
     brink(0);
-    textFont(UIFont_semiBold);
+    textFont(Const.UIFont_semiBold);
     textSize(75);
     text("Press "+Key+" key.", x, y);
 }

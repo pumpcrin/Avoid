@@ -19,7 +19,7 @@ class Title extends Scene {
   }
 
   void draw() {
-    textFont(UIFont_Bold);
+    textFont(Const.UIFont_Bold);
     textAlign(CENTER,BASELINE);
     fill(244, 69, 66);
     textSize(200);
@@ -75,7 +75,7 @@ class Game extends Scene {
     if(gameOver)    gameMode = 2;
     if(!(gameMode == 1) && gameOver){
       //Fire();
-      textFont(UIFont_Bold);
+      textFont(Const.UIFont_Bold);
       textAlign(CENTER,CENTER);
       textSize(75);
       fill(255);

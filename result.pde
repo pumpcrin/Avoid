@@ -4,20 +4,20 @@ void result(){
   
   score = Const.round3(((time * time)/ 2 * 3203.485789908)/5032);
   
-  textFont(UIFont_Bold);
+  textFont(Const.UIFont_Bold);
   textSize(150);
   fill(244, 69, 66);
   textAlign(CENTER,TOP);
   text("Result", width/2, 100);
   
-  textFont(UIFont_semiBold);
+  textFont(Const.UIFont_semiBold);
   fill(255);
   textAlign(CENTER,TOP);
   textSize(75);
   text("Score : " + score, width/2, 250);
   text("Time : "+ Const.round3(time/60) + " sec.", width/2, 350);
   
-  textFont(UIFont_Bold);
+  textFont(Const.UIFont_Bold);
   if(!(gameOver)) {
     textSize(110);
     text("Congratulation!!!", width/2, 550);

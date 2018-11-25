@@ -18,23 +18,18 @@ Boss boss;
 
 boolean nowFadeout = false;
 
-PFont UIFont_Bold;
-PFont UIFont_semiBold;
-PFont Japanese;
-
 float timeCount;
 float _timeCount; //timeCountの初期値格納変数
 int gameMode; //0=Title, 1=Gaming, 2=Result
 boolean gameOver; //false=GameClear, true=GameOver
-boolean debug = false;
 
 //以下，エフェクト関連宣言
 FireParticleSystem Fire;
 
 void setup() {
-  UIFont_Bold = loadFont("Blanka-Regular-250.vlw");
-  UIFont_semiBold = loadFont("Blanka-Regular-250.vlw");
-  Japanese = loadFont("851H-kktt-100.vlw");
+  Const.UIFont_Bold = loadFont("Blanka-Regular-250.vlw");
+  Const.UIFont_semiBold = loadFont("Blanka-Regular-250.vlw");
+  Const.Japanese = loadFont("851H-kktt-100.vlw");
   
   minim = new Minim(this);
   
@@ -70,8 +65,8 @@ void keyPressed() {
 }
 
 void keyReleased(){
-  if(key == 'D')  debug = !(debug);
-  else if((key == ENTER) && (debug))  gameOver = !(gameOver);
+  if(key == 'D')  Const.debug = !(Const.debug);
+  else if((key == ENTER) && (Const.debug))  gameOver = true;
 }
 
 void stop(){
@@ -81,8 +76,8 @@ void stop(){
 }
 
 void debug(){
-  if(debug){
-    textFont(UIFont_semiBold);
+  if(Const.debug){
+    textFont(Const.UIFont_semiBold);
     textAlign(LEFT,BOTTOM);
     fill(255);
     textSize(50);
