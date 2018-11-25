@@ -8,7 +8,8 @@ class Player{
       new IEventT<PVector>(){
         void action(PVector p){
           gameOver = true;
-          FireSetup(loc);
+          //FireSetup(loc);
+          EfHolder.add(new FireParticleSystem(loc, color(255, 34, 0)));
         }
       });
   }

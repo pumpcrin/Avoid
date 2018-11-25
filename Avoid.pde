@@ -9,7 +9,8 @@ Scene scene = new Title();
 Player player;
 BeamManager BeMane;
 CollisionManager CoMane;
-TimerHolder TiMane;
+TimerHolder TiHolder;
+EffectHolder EfHolder;
 Boss boss;
 
 boolean nowFadeout = false;
@@ -26,7 +27,6 @@ boolean debug = false;
 
 //以下，エフェクト関連宣言
 FireParticleSystem Fire;
-
 
 void setup() {
   UIFont_Bold = loadFont("Blanka-Regular-250.vlw");
@@ -45,6 +45,8 @@ void setup() {
 }
 
 void draw() {
+  TiHolder.update();    //タイマーは一番最初
+  
   if(!(nowFadeout)){
     background(0);
     scene.draw();

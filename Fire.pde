@@ -3,20 +3,22 @@ final float lifeSpan_s = 2;
 final int particleSize = 20;
 final float decayRate = 0.1;  //距離1あたりの光の減衰率
 
+/*
 void FireSetup(PVector _loc){
-  Fire = new FireParticleSystem(_loc, color(255, 34, 0, 205));
-}
+  //Fire = new FireParticleSystem(_loc, color(255, 34, 0, 205));
+}*/
 
+/*
 void Fire(){
   rectMode(CENTER);
   noStroke();
   background(0,100);
   blendMode(ADD);
   
-  if(Fire != null)  Fire.update();
+  //if(Fire != null)  Fire.update();
   
   blendMode(BLEND);
-}
+}*/
 
 
 
@@ -83,7 +85,7 @@ color changeColor(color col){
 
 
 
-class FireParticleSystem{
+class FireParticleSystem extends ParticleSystem{
   
   PVector loc;
   
@@ -127,7 +129,8 @@ class FireParticleSystem{
     if(count / frameRate < lifetime){
       count++;
     }else{
-      Fire = null;
+      isDispose = true;
+      //Fire = null;
     }
   }
   
@@ -140,9 +143,16 @@ class FireParticleSystem{
   }
   
   private void draw(int col_j){
+    rectMode(CENTER);
+    noStroke();
+    background(0,100);
+    blendMode(ADD);
+    
     for(int i = 0; i < parts.size(); i++){
       parts.get(i).update();
       parts.get(i).draw();
     }
+    
+    blendMode(BLEND);
   }
 }

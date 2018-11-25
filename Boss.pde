@@ -64,6 +64,6 @@ class Boss{
       }
     };
     
-    TiMane.setTimer(0.7, e);
+    TiHolder.setTimer(0.7, e);
   }
 }

@@ -1,41 +1,6 @@
-  float h_x1 = 50;
-  float h_y1 = 50;
-  float ell_x1 = 500;
-  float ell_y1 = 500;
-
-Charge ps;
-
-/*
-void setup(){
-
-  size(1000, 1000);
-  rectMode(CENTER);
-  noStroke();
-  ps = new Charge(new PVector(h_x1 +500,h_y1 +500), new PVector(ell_x1,ell_y1), color(255, 34, 0, 205));
-  
-
-}
-
-void draw (){
-  noStroke();
-  charge();
-  stroke(255);
-  fill(0);
-  ellipse(500,500,100,100);
-
-}*/
-
-void charge(){
-  noStroke();
-  background(0,100);
-  blendMode(ADD);
-  if(ps != null)
-    ps.update();
-}
 
 class Charge_Particle{
   final float lifeSpan_s = 2;
-  final float fireSpan_s = 3; //fire effect time
   
   int particleSize;
 
@@ -45,7 +10,7 @@ class Charge_Particle{
   
   float r;
   float lifeCounter;
-  float sec = 0;
+  //float sec = 0;
   
   boolean finish = false;
   
@@ -75,7 +40,7 @@ class Charge_Particle{
     r = particleSize * (lifeSpan_s * frameRate) / lifeCounter;
     
     if(!finish)
-    lifeCounter--;
+      lifeCounter--;
     
   }
   
@@ -88,11 +53,11 @@ class Charge_Particle{
     if(!finish){
       m = v.mag() * v.mag() / gravity;
       v.setMag(m);
-    }else if(sec < frameRate * 3){
-      sec++;
+    }else{
+      //sec++;
       m = v.mag() / 400;
       v.setMag(m);
-    }else ps = null;
+    }
   }
   
   void draw(){
@@ -107,8 +72,9 @@ class Charge_Particle{
   }
 }
 
-class Charge{
+class Charge extends ParticleSystem{
   final int particleAmount = 100;
+  final float fireSpan_s = 3; //fire effect time
   
   PVector loc_h;
   PVector loc_ell;
@@ -148,9 +114,17 @@ class Charge{
       }
     }
     
-    if (count / frameRate < lifetime) {
-      count++;
-    } else finish = true;
+    //count++などの処理（時間を数える処理）はCharge_Particleクラスにおける元sec++。
+    //また、isDisposeをtrueにすると、自動的にエフェクトが消えます
+    if (!finish){
+      if(count++ / frameRate < lifetime){
+        finish = true;
+        count = 0;
+      }
+    } else {
+      if(count++ < frameRate * fireSpan_s)
+        isDispose = true;
+    }
 
     if (parts.size() < particleAmount){
       if(!finish){
@@ -181,9 +155,10 @@ class Charge{
     parts.add(new Charge_Particle(loc_start, loc_h, col, particleSize,finish));
   }
   
+  //引数のRangeは前後の範囲
   private void createFire(int particleSize,float Range){
     float impactrange = r + (r * Range);
-    float firerange = r * 20;
+    float firerange = r * 20;              //横の範囲
     
     noFill();
     
@@ -209,9 +184,16 @@ class Charge{
   }
 
   private void draw() {
+    
+    noStroke();
+    background(0,100);
+    blendMode(ADD);
+    
     for (int i = 0; i < parts.size(); i++) {
       parts.get(i).update();
       parts.get(i).draw();
     }
+    
+    blendMode(BLEND);
   }
 }

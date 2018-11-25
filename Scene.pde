@@ -10,6 +10,9 @@ class Title extends Scene {
     if(Audioplayer != null)  Audioplayer.close();
     Audioplayer = minim.loadFile("title.mp3");
     Audioplayer.play();
+    
+    TiHolder = new TimerHolder();
+    EfHolder = new EffectHolder();
   }
 
   void draw() {
@@ -40,7 +43,6 @@ class Game extends Scene {
   void setup() {
     CoMane = new CollisionManager();
     BeMane = new BeamManager();
-    TiMane = new TimerHolder();
     boss = new Boss();
     player = new Player();
     
@@ -57,18 +59,15 @@ class Game extends Scene {
   }
 
   void draw() {
-    TiMane.update();    //タイマーは一番最初
     
-    BeMane.update();
-    boss.update();
+    if(!gameOver)  GameProcess();      //ゲームオーバーになったら出ないやつの処理
     
-    player.mine(7.5); //自機生成
-    CoMane.update();    //衝突判定はすべてのオブジェクトを移動させた後
-
+    EfHolder.update();  //エフェクトupdate
+    
     if(gameMode == 1 && timeCount == 0)  gameMode = 2; //Result
     if(gameOver)    gameMode = 2;
     if(!(gameMode == 1) && gameOver){
-      Fire();
+      //Fire();
       textFont(UIFont_Bold);
       textAlign(CENTER,CENTER);
       textSize(75);
@@ -77,6 +76,14 @@ class Game extends Scene {
     }
     
     timeCounter(); //左上にカウンター表示
+  }
+  
+  void GameProcess(){
+    BeMane.update();
+    boss.update();
+    player.mine(7.5);   //自機生成
+    
+    CoMane.update();    //衝突判定はすべてのオブジェクトを移動させた後
   }
 }
 
