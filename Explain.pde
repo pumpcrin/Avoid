@@ -1,9 +1,9 @@
-void Explanation(){
+void Explain(){
   textFont(Const.UIFont_Bold);
   textAlign(CENTER,TOP);
   fill(244, 69, 66);
   textSize(150);
-  text("Explanation",width/2,3);
+  text("Explain",width/2,3);
   
   
   textFont(Const.Japanese);

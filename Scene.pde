@@ -40,7 +40,7 @@ class explanation extends Scene {
   }
   
   void draw(){
-    Explanation();
+    Explain();
   }
 }
 
