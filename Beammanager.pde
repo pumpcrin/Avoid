@@ -5,7 +5,7 @@ class BeamManager{
   
   void update(){
     add();
-    //println(beams.size(),location);
+    println(beams.size(),location);
   }
   
   void add(){  
@@ -35,15 +35,19 @@ class BeamManager{
       beam.lines();
       beam.move();
       
-      if((beam.start.x > width+50 && beam.end.x > width+50 ) ||
-          (beam.start.y > height+50 && beam.end.y > height+50 ) ||
-          (beam.start.x < -50 && beam.end.x < -50 ) ||
-          (beam.start.y < -50 && beam.end.y < -50 ))
+      if(beam.isDispose || isOut(beam))
       {
         beams.remove(i);
         i--;
       }
       
     }
+  }
+  
+  boolean isOut(Beam beam){
+    return ((beam.start.x > width+50 && beam.end.x > width+50 ) ||
+          (beam.start.y > height+50 && beam.end.y > height+50 ) ||
+          (beam.start.x < -50 && beam.end.x < -50 ) ||
+          (beam.start.y < -50 && beam.end.y < -50 ));
   }
 }

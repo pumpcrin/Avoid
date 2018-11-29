@@ -8,7 +8,8 @@ class Beam{
   
   boolean isStandard;
   boolean isAbsorbed;   //trueの間吸収されている変数　
-                        //if文のみ作ればよい
+  boolean isDispose;     //終点が視点を越えたらtrueになる
+  
                         
   color col;
   
@@ -39,10 +40,20 @@ class Beam{
   
   //ビームの動き
   void move(){
-    
-    start.add(v);
-    end.add(v);
-    
-  }
+    if(isAbsorbed == false)
+    {
+      start.add(v);
+      end.add(v);
+    }
+    else 
+   {
+     end.add(v);
+   }
+   
+   if((start.x - end.x < 0)&&(v.x > 0)||(start.x - end.x > 0)&&(v.x < 0) )
+   {
+     isDispose = true;
+   }
+ }
 }
       
