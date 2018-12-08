@@ -26,7 +26,7 @@ class Title extends Scene {
     text("Avoid", width/2, height/2-50);
     
     
-    pressanyKey("Space",width/2,height/2+70);
+    display.pressanyKey("Space",width/2,height/2+70);
   }
 }
 
@@ -40,7 +40,7 @@ class explanation extends Scene {
   }
   
   void draw(){
-    Explain();
+    display.Explain();
   }
 }
 
@@ -82,7 +82,7 @@ class Game extends Scene {
       text("GAMEOVER...",width/2,height/2);
     }
     
-    timeCounter(); //左上にカウンター表示
+    display.timeCounter(); //左上にカウンター表示
   }
   
   void GameProcess(){
@@ -107,6 +107,6 @@ class Result extends Scene {
   }
 
   void draw() {
-    result();
+    display.result();
   }
 }

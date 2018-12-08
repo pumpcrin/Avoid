@@ -7,6 +7,7 @@ import java.math.*;
 
 //シーン
 Scene scene = new Title();
+Display display = new Display();
 
 //以下，システム関連宣言
 Player player;
