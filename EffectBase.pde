@@ -23,7 +23,7 @@ class EffectHolder{
 }
 
 abstract class ParticleSystem{
-  boolean isDispose = false;
+  protected boolean isDispose = false;
   
   abstract void update();
 }

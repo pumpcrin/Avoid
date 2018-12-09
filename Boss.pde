@@ -14,7 +14,19 @@ class Boss{
     CoMane.holder.getEvent(CollisionTypes.Beam2Boss).setEvent(
       new IEventT<PVector>(){
         void action(PVector p){
-          finishAbsorb(p);
+          
+          WaveEffect wave = new WaveEffect(p, r/2);
+          EfHolder.add(wave);
+          
+          IEvent e = new IEvent(){
+            public void action(){
+              finishAbsorb();
+            }
+          };
+          
+          // このエフェクトが消える処理を実装するのにCollisionをいじらないといけないので、今は時間で消える
+          TiHolder.setTimer(1f, e);
+          //
         }
       });
       
@@ -47,8 +59,7 @@ class Boss{
     text(holdBeams, boss.loc.x, boss.loc.y);
   }
   
-  void finishAbsorb(PVector p){
-    collidePoint_debug = p.copy();
+  void finishAbsorb(){
     holdBeams++;
     
     IEvent e = new IEvent(){

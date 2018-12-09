@@ -5,7 +5,7 @@ static class Const{
   static PFont Japanese;
   static boolean debug = false;
   
-  static final boolean IsOnlyOneBeam = false;    //ビームが一つだけ出る動画がほしいというかぶさんの要望から
+  static final boolean IsOnlyOneBeam = true;    //ビームが一つだけ出る動画がほしいというかぶさんの要望から
   static final int TimeLimit = 15;
   
   static final color StandardBeamCol = ConstColor(0, 255, 0);

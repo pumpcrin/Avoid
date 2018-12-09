@@ -8,7 +8,10 @@ class TimerHolder{
   }
   
   void update(){
-    for(Timer timer : timers)  timer.update();
+    for(int i = 0; i < timers.size(); i++){
+      Timer timer = timers.get(i);
+      timer.update();
+    }
     
     for(int i = 0; i < timers.size(); i++){
       Timer timer = timers.get(i);
