@@ -52,7 +52,7 @@ void draw() {
   }
   
   if(nowFadeout){
-    fadeOut(0,0,width,height);
+    display.Fadeout(0,0,width,height);
   }
   
   debug();

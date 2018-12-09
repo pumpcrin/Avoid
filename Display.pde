@@ -107,4 +107,24 @@ class Display{
     textAlign(RIGHT,BOTTOM);
     pressanyKey("Space",width,height);
   }
+  
+  private int count=0;
+
+  void Fadeout(float x1, float y1, float x2, float y2){
+    if(nowFadeout){
+      rectMode(LEFT);
+      noStroke();
+      fill(0,50);
+      
+      rect(x1,y1,x2,y2);
+    }
+    
+    if(this.count>255){
+      nowFadeout = false;
+      this.count = 0;
+      sceneChange();
+    }else{
+      this.count=this.count+50;
+    }
+  }
 }

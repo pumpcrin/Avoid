@@ -11,7 +11,7 @@ class BeamManager{
     else                     gamelevel();
     
     control();
-    println(beams.size(),location);
+    //println(beams.size(),location);
   }
   
   //どれくらいの頻度でビームを出すか
