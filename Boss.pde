@@ -64,10 +64,13 @@ class Boss{
       }
     };
     
-    float s = Charge.fireSpan_s + Charge_Particle.lifeSpan_s;
+    float s = Charge_Particle.lifeSpan_s;
     TiHolder.setTimer(s, e);
     
-    Charge ch = new Charge(p, loc, Const.BossBeamCol);
+    PVector chargePoint = PVector.sub(player.loc, boss.loc).setMag(r);
+    chargePoint.add(loc);
+    Charge ch = new Charge(chargePoint, loc, Const.BossBeamCol);
+    
     EfHolder.add(ch);
   }
 }
