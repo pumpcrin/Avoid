@@ -20,6 +20,10 @@ class EffectHolder{
   void add(ParticleSystem ps){
     pss.add(ps);
   }
+  
+  float getSize(){
+    return pss.size();
+  }
 }
 
 abstract class ParticleSystem{

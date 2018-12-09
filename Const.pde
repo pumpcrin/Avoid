@@ -5,12 +5,13 @@ static class Const{
   static PFont Japanese;
   static boolean debug = false;
   
-  static final boolean IsOnlyOneBeam = true;    //ビームが一つだけ出る動画がほしいというかぶさんの要望から
+  static final boolean IsOnlyOneBeam = false;    //ビームが一つだけ出る動画がほしいというかぶさんの要望から
   static final int TimeLimit = 15;
   
   static final color StandardBeamCol = ConstColor(0, 255, 0);
   static final color BossBeamCol = ConstColor(20, 134, 255);
   static final color FireCol = ConstColor(255, 34, 0);
+  static final color BossTextCol = ConstColor(0, 134, 255);
   
   static final int BossBeamLength = 20;
   static final int StandardBeamLength = 75;

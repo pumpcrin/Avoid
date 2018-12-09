@@ -78,7 +78,7 @@ void stop(){
 
 void debug(){
   if(Const.debug){
-    textFont(Const.UIFont_semiBold);
+    textFont(Const.UIFont_semiBold);  
     textAlign(LEFT,BOTTOM);
     fill(255);
     textSize(50);

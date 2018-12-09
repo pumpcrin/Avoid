@@ -17,7 +17,7 @@ class WaveEffect extends ParticleSystem{
     
     wf = new WaterFilter();
     wf.setRadius(r);
-    wf.setAmplitude(5);
+    wf.setAmplitude(2);
     
     IEvent e = new IEvent(){
        void action(){

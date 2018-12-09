@@ -76,8 +76,8 @@ class Charge extends ParticleSystem{
   static final int particleAmount = 100;
   static final float fireSpan_s = 3; //fire effect time
   
-  PVector loc_h;        //bossの中心
-  PVector loc_ell;      //発射点
+  PVector loc_h;        //発射点
+  PVector loc_ell;      //ボスの座標
   PVector loc_end = loc_ell;
   
   float count;
@@ -99,6 +99,11 @@ class Charge extends ParticleSystem{
 
   Charge(PVector loc_h, PVector loc_ell, int r, int g, int b, int a) {
     this(loc_h, loc_ell, color(r, g, b, a));
+  }
+  
+  //ボスが回転するようになってから使うようにしたコンストラクタ（回転の中心がボスの座標なので、ボスの座標を0としている）
+  Charge(PVector loc_h, color _col){
+    this(loc_h, new PVector(0, 0), _col);
   }
 
   void update() {

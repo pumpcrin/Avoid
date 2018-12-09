@@ -2,14 +2,18 @@ class Boss{
   
   PVector loc;
   int r;
+  float radian;
   
   PVector collidePoint_debug;
   
+  private EffectHolder Effects;
   private int holdBeams;
   
   Boss(PVector _loc){
     loc = _loc.copy();
     r = 100;
+    radian = 0;
+    Effects = new EffectHolder();
     
     CoMane.holder.getEvent(CollisionTypes.Beam2Boss).setEvent(
       new IEventT<PVector>(){
@@ -40,10 +44,36 @@ class Boss{
   }
   
   void update(){
+    rotateDraw();
+  }
+  
+  void rotateDraw(){
+    if(Effects.getSize() != 0)
+      radian = PVector.sub(player.loc, loc).heading();
+    
+    pushMatrix();
+    translate(loc.x, loc.y);
+    rotate(radian);
+    
     draw();
+    
+    popMatrix();
   }
   
   void draw(){
+    
+    noStroke();
+    fill(255);
+    ellipse(0, 0, r*2, r*2);
+    
+    fill(Const.BossTextCol);
+    textSize(75);
+    textAlign(CENTER, CENTER);
+    text(holdBeams, 0, 0);
+    
+    Effects.update();
+    
+    /*
     noStroke();
     fill(255);
     ellipse(loc.x, loc.y, r*2, r*2);
@@ -57,6 +87,8 @@ class Boss{
     textSize(75);
     textAlign(CENTER, CENTER);
     text(holdBeams, boss.loc.x, boss.loc.y);
+    */
+    
   }
   
   void finishAbsorb(){
@@ -80,8 +112,9 @@ class Boss{
     
     PVector chargePoint = PVector.sub(player.loc, boss.loc).setMag(r);
     chargePoint.add(loc);
-    Charge ch = new Charge(chargePoint, loc, Const.BossBeamCol);
+    Charge ch = new Charge(PVector.sub(chargePoint, loc), Const.BossBeamCol);
     
-    EfHolder.add(ch);
+    //EfHolder.add(ch);
+    Effects.add(ch);
   }
 }
