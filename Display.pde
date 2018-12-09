@@ -9,7 +9,7 @@ class Display{
     }
     textFont(Const.UIFont_Bold);
     textAlign(LEFT,TOP);
-    textSize(75);
+    textSize(width/25);
     text(timeCount/60,0,0);
     
     if((gameMode == 2)){
@@ -37,7 +37,7 @@ class Display{
     textFont(Const.UIFont_Bold);
     textAlign(CENTER,TOP);
     fill(244, 69, 66);
-    textSize(150);
+    textSize(width/14);
     text("Explain",width/2,3);
     
     
@@ -48,7 +48,8 @@ class Display{
     
     textSize(50);
     text("ビームはがめんがいからとんでくるぞ",width/4,height/5*1.5);
-    text("ボスはきょうりょくなこうげきをしてくるぞ",width/4*3,height/5*1.5);
+    text("ボスはまわりのビームをきゅうしゅうして",width/4*3,height/5*1.5-22);
+    text("きょうりょくなこうげきをしてくるぞ",width/4*3,height/5*1.5+22);
     
     noFill();
     stroke(255,1000);
@@ -72,7 +73,7 @@ class Display{
     textAlign(RIGHT,BOTTOM);
     brink(0);
     textFont(Const.UIFont_semiBold);
-    textSize(75);
+    textSize(width/25);
     text("Press Space key to Start.", width, height);
   }
   
@@ -83,24 +84,24 @@ class Display{
     score = Const.round3(((time * time)/ 2 * 3203.485789908)/5032);
     
     textFont(Const.UIFont_Bold);
-    textSize(150);
+    textSize(width/14);
     fill(244, 69, 66);
     textAlign(CENTER,TOP);
-    text("Result", width/2, 100);
+    text("Result", width/2, 85);
     
     textFont(Const.UIFont_semiBold);
     fill(255);
     textAlign(CENTER,TOP);
-    textSize(75);
+    textSize(width/20);
     text("Score : " + score, width/2, 250);
     text("Time : "+ Const.round3(time/60) + " sec.", width/2, 350);
     
     textFont(Const.UIFont_Bold);
     if(!(gameOver)) {
-      textSize(110);
+      textSize(width/20);
       text("Congratulation!!!", width/2, 550);
     }else{
-      textSize(110);
+      textSize(width/20);
       text("Never Give Up...", width/2, 550);
     }
     
