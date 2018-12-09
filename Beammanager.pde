@@ -2,9 +2,14 @@ class BeamManager{
   ArrayList<Beam> beams = new ArrayList<Beam>();
   int location ; //ビームをどの位置から出すか
   
+  boolean isEmittedOneBeam = false;
+  
   
   void update(){
-    gamelevel();
+    
+    if(Const.IsOnlyOneBeam)  addOneBeam();    //一つだけビームが出る動画がほしいというかぶさんからのためだけの処理
+    else                     gamelevel();
+    
     control();
     println(beams.size(),location);
   }
@@ -33,7 +38,8 @@ class BeamManager{
    }
   }
   
-  void add(){  
+  void add(){
+    
     //どの位置からビームがでるか
     BeMane.location = int(random(0,4));
     switch(location){
@@ -71,6 +77,17 @@ class BeamManager{
       }
       }
      
+  }
+  
+  //一つだけビームが出る動画がほしいというかぶさんのためだけの関数
+  void addOneBeam(){
+    
+    if(isEmittedOneBeam)  return;
+    PVector start = new PVector(width, 0);
+    PVector v = PVector.sub(boss.loc, start).setMag(10);
+    beams.add(new Beam(start.x, start.y, v.x, v.y, 75));
+    
+    isEmittedOneBeam = true;
   }
    
    

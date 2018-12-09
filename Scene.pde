@@ -86,7 +86,9 @@ class Game extends Scene {
   }
   
   void GameProcess(){
+    
     BeMane.update();
+    
     boss.update();
     player.mine(7.5);   //自機生成
     
