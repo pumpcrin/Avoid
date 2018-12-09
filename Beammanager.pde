@@ -11,16 +11,20 @@ class BeamManager{
   
   //どれくらいの頻度でビームを出すか
   void gamelevel(){
-     if(timeCount/60 >  10 && timeCount/60 < 15){
+     if(timeCount/60 >  12 && timeCount/60 < 15){
       if(timeCount % 10 == 0)
         add();  
       }
-    else if(timeCount/60 >  5 && timeCount/60 < 10){
+    else  if(timeCount/60 >  10 && timeCount/60 < 12){
       if(timeCount % 8 == 0)
         add();  
       }
+    else if(timeCount/60 >  5 && timeCount/60 < 10){
+      if(timeCount % 5 == 0)
+        add();  
+      }
    else if(timeCount/60 > 3.5 && timeCount/60 < 5){
-     if(timeCount % 5 == 0)
+     if(timeCount % 3 == 0)
      add();
    }
    else if(timeCount/60 > 0 && timeCount/60 < 3.5){
@@ -62,7 +66,11 @@ class BeamManager{
         beams.remove(i);
         i--;
       }
+      if(timeCount == 0){
+      beam.isAbsorbed = true;
       }
+      }
+     
   }
    
    

@@ -55,10 +55,10 @@ class Boss{
       public void action(){
         holdBeams--;
         
-        PVector v = PVector.sub(player.loc, loc).setMag(15);
+        PVector v = PVector.sub(player.loc, loc).setMag(10);
         PVector start = PVector.add(loc, v.copy().setMag(r));
         
-        Beam beam = new Beam(start, v, 13, Const.BossBeamCol);
+        Beam beam = new Beam(start, v, 20, Const.BossBeamCol);
         beam.isStandard = false;
         BeMane.beams.add(beam);
       }
