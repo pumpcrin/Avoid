@@ -40,20 +40,22 @@ class BeamManager{
   
   void add(){
     
+    float len = Const.StandardBeamLength;
+    
     //どの位置からビームがでるか
     BeMane.location = int(random(0,4));
     switch(location){
      
-      case 0 : beams.add(new Beam(random(width),0,random(-4,4),random(3,5),75)); //up
+      case 0 : beams.add(new Beam(random(width),0,random(-4,4),random(3,5),len)); //up
       break;
       
-      case 1 : beams.add(new Beam(random(width),height,random(-4,4),random(-3,-5),75));//down
+      case 1 : beams.add(new Beam(random(width),height,random(-4,4),random(-3,-5),len));//down
       break;
       
-      case 2 :  beams.add(new Beam(0,random(height),random(3,5),random(-4,4),75)); //left
+      case 2 :  beams.add(new Beam(0,random(height),random(3,5),random(-4,4),len)); //left
       break;
       
-      case 3 :   beams.add(new Beam(width,random(height),random(-3,-5),random(-4,4),75)); //right
+      case 3 :   beams.add(new Beam(width,random(height),random(-3,-5),random(-4,4),len)); //right
       break;
       
       default : println("error");
