@@ -12,17 +12,27 @@ class Player{
           EfHolder.add(new FireParticleSystem(loc, color(255, 34, 0)));
         }
       });
+      
+    loc = new PVector(width*3/4, height*3/4);
   }
   
   void mine(float _R) {
+   
+    
     ellipseMode(CENTER);
     noStroke();
     
     R = _R;
-    loc = new PVector(mouseX, mouseY);
+    
+    if(!isInBossCircle())
+      loc = new PVector(mouseX, mouseY);
   
     //自機描画
     fill(111, 186, 0);
     ellipse(loc.x, loc.y, _R*2, _R*2);
+  }
+  
+  boolean isInBossCircle(){
+    return (dist(mouseX, mouseY, boss.loc.x, boss.loc.y) < boss.r);
   }
 }
