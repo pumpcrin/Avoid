@@ -8,6 +8,7 @@ class Boss{
   
   private EffectHolder Effects;
   private int holdBeams;
+  private Charge currentAimingEffect;
   
   Boss(PVector _loc){
     loc = _loc.copy();
@@ -48,8 +49,7 @@ class Boss{
   }
   
   void rotateDraw(){
-    if(Effects.getSize() != 0)
-      radian = PVector.sub(player.loc, loc).heading();
+    calculateRadian();
     
     pushMatrix();
     translate(loc.x, loc.y);
@@ -58,6 +58,30 @@ class Boss{
     draw();
     
     popMatrix();
+  }
+  
+  void calculateRadian(){
+    
+    if(currentAimingEffect == null)
+      if(Effects.pss.size() != 0)  currentAimingEffect = (Charge)Effects.pss.get(0);
+    
+    if(currentAimingEffect != null){
+      PVector toPlayer = PVector.sub(player.loc, loc);
+      float addRad = toPlayer.heading() - (currentAimingEffect.loc_h.heading() + radian);    //プレイヤーに向かうベクトルとチャージエフェクトの  角度の差（マイナス込み）
+      
+      //近い動き方をするようにした（ex -270度の差がある時は+90度回転する）
+      if(abs(addRad) > PI){
+        float pi2 = 2*PI;
+        if(addRad > 0)  pi2 *= -1;
+        addRad += pi2;
+      }
+      
+      addRad *= 0.1f;    //角の差に比例する回転速度
+      
+      radian += addRad;
+      
+      if(currentAimingEffect.finish)  currentAimingEffect = null;
+    }
   }
   
   void draw(){
@@ -112,7 +136,7 @@ class Boss{
     
     PVector chargePoint = PVector.sub(player.loc, boss.loc).setMag(r);
     chargePoint.add(loc);
-    Charge ch = new Charge(PVector.sub(chargePoint, loc), Const.BossBeamCol);
+    Charge ch = new Charge(/*PVector.sub(chargePoint, loc)*/new PVector(0, r), Const.BossBeamCol);    //第一引数はボスの中心を始点とするベクトル
     
     //EfHolder.add(ch);
     Effects.add(ch);

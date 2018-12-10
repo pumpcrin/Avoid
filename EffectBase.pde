@@ -24,6 +24,10 @@ class EffectHolder{
   float getSize(){
     return pss.size();
   }
+  
+  ArrayList<ParticleSystem> getEffects(){
+    return pss;
+  }
 }
 
 abstract class ParticleSystem{
