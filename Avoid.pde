@@ -18,6 +18,7 @@ EffectHolder EfHolder;
 Boss boss;
 
 boolean nowFadeout = false;
+boolean stop_debug = false;
 
 float timeCount;
 float _timeCount; //timeCountの初期値格納変数
@@ -44,6 +45,16 @@ void setup() {
 }
 
 void draw() {
+  /*
+  デバッグ用
+  if(stop_debug){
+    fill(255, 134, 0);
+    ellipse(Error_loc.x, Error_loc.y, Error_R*2, Error_R*2);
+    stroke(255, 134, 0);
+    line(Error_start.x, Error_start.y, Error_end.x, Error_end.y);
+    return;
+  }*/
+  
   TiHolder.update();    //タイマーは一番最初
   
   if(!(nowFadeout)){
@@ -70,6 +81,8 @@ void keyReleased(){
   else if((key == ENTER) && (Const.debug))  gameOver = true;
 }
 
+
+
 void stop(){
   if(Audioplayer != null)  Audioplayer.close();
   minim.stop();
@@ -91,3 +104,18 @@ void debug(){
     text("FPS = "+int(frameRate),0,height);
   }
 }
+
+//boolean isMousePressing = false;    デバッグ用
+
+/*
+デバッグ用です
+void mousePressed(){
+  if(scene instanceof Game){
+    if(!isMousePressing)  stop_debug = !stop_debug;
+    isMousePressing = true;
+  }
+}
+
+void mouseReleased(){
+  isMousePressing = false;
+}*/

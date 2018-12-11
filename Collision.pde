@@ -1,5 +1,11 @@
 enum CollisionTypes{ Beam2Boss, Beam2Player };
 
+PVector Error_start;
+PVector Error_end;
+PVector Error_loc;
+int Error_R;
+
+
 class CollisionManager{
   
   CoEventHolder holder;
@@ -19,8 +25,15 @@ class CollisionManager{
       
       //Playerとビームのあたり判定
       if(!gameOver && (gameMode == 1) && LineHitCircle(beam.start, beam.end, player.loc, (int)player.R)){
-        ;//holder.getEvent(CollisionTypes.Beam2Player).setValue(player.loc);
+        holder.getEvent(CollisionTypes.Beam2Player).setValue(player.loc);
         
+        /*
+        Error_start = beam.start.copy();
+        Error_end = beam.end.copy();
+        Error_loc = player.loc.copy();
+        Error_R = (int)player.R;
+        stop_debug = true;
+        */
       }
       
       if(!beam.isStandard)  continue;    //Bossの玉ならBossとの判定はしない
@@ -30,6 +43,12 @@ class CollisionManager{
       PVector end_after = PVector.add(beam.end, beam.v);
       
       if(!beam.isAbsorbed && LineHitCircle(start_after, end_after, boss.loc, boss.r)){
+        /*
+        Error_start = start_after.copy();
+        Error_end = end_after.copy();
+        Error_loc = boss.loc.copy();
+        Error_R = (int)boss.r;
+        */
         PVector collidePoint = getCollidePoint(beam.start, beam.v, boss.loc, boss.r);
         holder.getEvent(CollisionTypes.Beam2Boss).setValue(collidePoint);
         
@@ -60,12 +79,14 @@ boolean LineHitCircle(PVector start, PVector end, PVector circleCenter, int r){
   //線分の両端の内側にいるなら、どちらかの内積は負
   PVector start2circle = PVector.sub(circleCenter, start);
   PVector end2circle   = PVector.sub(circleCenter, end);
-  float dot1 = start2circle.dot(circleCenter);
-  float dot2 = end2circle.dot(circleCenter);
+  
+  PVector lineLen = PVector.sub(end, start);
+  float dot1 = start2circle.dot(lineLen);
+  float dot2 = end2circle.dot(lineLen);
   
   float dist;
   if(dot1*dot2 < 0){
-    PVector lineLen = PVector.sub(end, start);
+    //PVector lineLen = PVector.sub(end, start);
     float cross = start2circle.cross(lineLen).mag();
     dist = cross / lineLen.mag();
   }
