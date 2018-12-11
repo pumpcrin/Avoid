@@ -19,6 +19,7 @@ class Boss{
     CoMane.holder.getEvent(CollisionTypes.Beam2Boss).setEvent(
       new IEventT<PVector>(){
         void action(PVector p){
+          holdBeams++;          //吸収中にholdBeamsの数を増やす
           
           WaveEffect wave = new WaveEffect(p, r/2);
           EfHolder.add(wave);
@@ -130,7 +131,6 @@ class Boss{
   }
   
   void finishAbsorb(){
-    holdBeams++;
     
     IEvent e = new IEvent(){
       public void action(){
@@ -138,9 +138,8 @@ class Boss{
         
         float t = Const.TimeLimit - timeCount / 60;
         println(t);
-        float m = pow(2, 0.08*t + 2);              //最大で初期速度の3倍にしかならないようにする  また、dv/dtは増加傾向
-                                                                    //計算式:   v = a^(t - b)
-                                                                    
+        float m = pow(2, 0.08*t + 2);              //dv/dtは増加傾向      計算式:   v = a^(bt + c)
+        
         PVector v = PVector.sub(player.loc, loc).setMag(m);
         PVector start = PVector.add(loc, v.copy().setMag(r));
         

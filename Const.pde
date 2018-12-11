@@ -6,7 +6,7 @@ static class Const{
   static boolean debug = false;
   
   static final boolean IsOnlyOneBeam = false;    //ビームが一つだけ出る動画がほしいというかぶさんの要望から
-  static final int TimeLimit = 30;
+  static final int TimeLimit = 10;
   
   static final color StandardBeamCol = ConstColor(0, 255, 0);
   static final color BossBeamCol = ConstColor(20, 134, 255);
