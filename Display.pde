@@ -51,23 +51,11 @@ class Display{
     text("ボスはまわりのビームをきゅうしゅうして",width/4*3,height/5*1.5-22);
     text("きょうりょくなこうげきをしてくるぞ",width/4*3,height/5*1.5+22);
     
-    noFill();
-    stroke(255,1000);
-    strokeWeight(1);
-    rectMode(CENTER);
-    rect(width/4,height/5*3,800,400);
-    rect(width/4*3,height/5*3,800,400);
     
+    imageMode(CENTER);
+    image(Const.moreBeam,width/4,height/5*3,800,500);
+    image(Const.onlyBeam,width/4*3,height/5*3,800,500);
     
-    /////////////////////ここから四角の中でビームとか飛ばす/////////////////////////
-    
-    
-    
-    
-    
-    
-    
-    //////////////////////////////ここまで//////////////////////////////////////
     
     
     textAlign(RIGHT,BOTTOM);
@@ -112,10 +100,11 @@ class Display{
   private int count=0;
 
   void Fadeout(float x1, float y1, float x2, float y2){
+    int fade = 50;
     if(nowFadeout){
       rectMode(LEFT);
       noStroke();
-      fill(0,50);
+      fill(0,fade);
       
       rect(x1,y1,x2,y2);
     }
@@ -125,7 +114,7 @@ class Display{
       this.count = 0;
       sceneChange();
     }else{
-      this.count=this.count+50;
+      this.count=this.count+fade;
     }
   }
 }

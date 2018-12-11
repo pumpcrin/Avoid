@@ -5,6 +5,8 @@ float BGMGain;
 
 import java.math.*;
 
+import processing.video.*;
+
 //シーン
 Scene scene = new Title();
 Display display = new Display();
@@ -32,6 +34,8 @@ void setup() {
   Const.UIFont_Bold = loadFont("Blanka-Regular-250.vlw");
   Const.UIFont_semiBold = loadFont("Blanka-Regular-250.vlw");
   Const.Japanese = loadFont("851H-kktt-100.vlw");
+  Const.moreBeam = new Movie(this, "moreBeam.mp4");
+  Const.onlyBeam = new Movie(this, "onlyBeam.mp4");
   
   minim = new Minim(this);
   
@@ -81,6 +85,9 @@ void keyReleased(){
   else if((key == ENTER) && (Const.debug))  gameOver = true;
 }
 
+void movieEvent(Movie m){
+  m.read();
+}
 
 
 void stop(){
@@ -108,7 +115,7 @@ void debug(){
 //boolean isMousePressing = false;    デバッグ用
 
 /*
-デバッグ用です
+//デバッグ用です
 void mousePressed(){
   if(scene instanceof Game){
     if(!isMousePressing)  stop_debug = !stop_debug;

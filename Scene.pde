@@ -32,6 +32,9 @@ class Title extends Scene {
 
 class explanation extends Scene {
   void setup(){
+    Const.onlyBeam.loop();
+    Const.moreBeam.loop();
+    
     if(Audioplayer != null)  Audioplayer.close();
     Audioplayer = minim.loadFile("ex.mp3");
     Audioplayer.loop();
@@ -46,6 +49,9 @@ class explanation extends Scene {
 
 class Game extends Scene {
   void setup() {
+    Const.onlyBeam.stop();
+    Const.moreBeam.stop();
+    
     CoMane = new CollisionManager();
     BeMane = new BeamManager();
     boss = new Boss();

@@ -46,7 +46,8 @@ class WaveEffect extends ParticleSystem{
     BufferedImage subImage = bi.getSubimage((int)loc_disp.x, (int)loc_disp.y, radius*2, radius*2);
   
     PImage img2 = new PImage(wf.filter(subImage, null));
-  
+    
+    imageMode(CORNER);
     image(img2, loc_disp.x, loc_disp.y);
   }
   

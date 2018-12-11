@@ -1,4 +1,6 @@
 static class Const{
+  static Movie moreBeam;
+  static Movie onlyBeam;
   
   static PFont UIFont_Bold;
   static PFont UIFont_semiBold;
