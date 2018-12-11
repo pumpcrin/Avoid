@@ -136,11 +136,15 @@ class Boss{
       public void action(){
         holdBeams--;
         
-        float t = Const.TimeLimit - timeCount / 60;
-        println(t);
-        float m = pow(2, 0.08*t + 2);              //dv/dtは増加傾向      計算式:   v = a^(bt + c)
+        //float t = Const.TimeLimit - timeCount / 60;
+        //float m = pow(2, 0.08*t + 2);              //dv/dtは増加傾向      計算式:   v = a^(bt + c)
+        float m = 1 - timeCount / (Const.TimeLimit * 60);
+        m *= m;
         
-        PVector v = PVector.sub(player.loc, loc).setMag(m);
+        //mag = a * m + b とすると、最大値: a+b  最小値: b
+        float mag = (Const.BossBeamMaxVelocity - Const.BossBeamMinVelocity) * m + Const.BossBeamMinVelocity;
+        PVector v = PVector.sub(player.loc, loc).setMag(mag);
+        
         PVector start = PVector.add(loc, v.copy().setMag(r));
         
         Beam beam = new Beam(start, v, Const.BossBeamLength, Const.BossBeamCol);
