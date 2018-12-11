@@ -16,23 +16,23 @@ class BeamManager{
   
   //どれくらいの頻度でビームを出すか
   void gamelevel(){
-     if(timeCount/60 >  12 && timeCount/60 < 15){
+     if(timeCount/60 >  Const.TimeLimit * 4/5 && timeCount/60 < Const.TimeLimit){
       if(timeCount % 10 == 0)
         add();  
       }
-    else  if(timeCount/60 >  10 && timeCount/60 < 12){
+    else  if(timeCount/60 >  Const.TimeLimit *3/2 && timeCount/60 < Const.TimeLimit*4/5){
       if(timeCount % 8 == 0)
         add();  
       }
-    else if(timeCount/60 >  5 && timeCount/60 < 10){
+    else if(timeCount/60 >  Const.TimeLimit/3 && timeCount/60 < Const.TimeLimit*3/2){
       if(timeCount % 5 == 0)
         add();  
       }
-   else if(timeCount/60 > 3.5 && timeCount/60 < 5){
+   else if(timeCount/60 > Const.TimeLimit*3.5/15 && timeCount/60 < Const.TimeLimit/3){
      if(timeCount % 3 == 0)
      add();
    }
-   else if(timeCount/60 > 0 && timeCount/60 < 3.5){
+   else if(timeCount/60 > 0 && timeCount/60 < Const.TimeLimit*3.5/15){
      if(timeCount % 1 == 0)
      add();
    }

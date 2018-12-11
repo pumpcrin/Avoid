@@ -19,7 +19,8 @@ class CollisionManager{
       
       //Playerとビームのあたり判定
       if(!gameOver && (gameMode == 1) && LineHitCircle(beam.start, beam.end, player.loc, (int)player.R)){
-        holder.getEvent(CollisionTypes.Beam2Player).setValue(player.loc);
+        ;//holder.getEvent(CollisionTypes.Beam2Player).setValue(player.loc);
+        
       }
       
       if(!beam.isStandard)  continue;    //Bossの玉ならBossとの判定はしない

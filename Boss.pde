@@ -62,8 +62,22 @@ class Boss{
   
   void calculateRadian(){
     
+    /*
+    //チャージを終えたエフェクトはボスと一緒には回らないようにする
+    for(int i = 0; i < Effects.pss.size(); i++){
+      Charge ch = (Charge)Effects.pss.get(i);
+      if(ch.finish){
+        Effects.pss.remove(i);
+        i--;
+        EfHolder.add(ch);
+      }
+    }*/
+    
+    //エイム中のチャージエフェクトをセット
     if(currentAimingEffect == null)
-      if(Effects.pss.size() != 0)  currentAimingEffect = (Charge)Effects.pss.get(0);
+      if(Effects.pss.size() != 0)
+        currentAimingEffect = (Charge)Effects.pss.get(0);
+      
     
     if(currentAimingEffect != null){
       PVector toPlayer = PVector.sub(player.loc, loc);
@@ -76,7 +90,7 @@ class Boss{
         addRad += pi2;
       }
       
-      addRad *= 0.1f;    //角の差に比例する回転速度
+      addRad *= 0.2f;    //角の差に比例する回転速度
       
       radian += addRad;
       
@@ -95,7 +109,7 @@ class Boss{
     textAlign(CENTER, CENTER);
     text(holdBeams, 0, 0);
     
-    Effects.update();
+    //DEffects.update();
     
     /*
     noStroke();
@@ -122,7 +136,12 @@ class Boss{
       public void action(){
         holdBeams--;
         
-        PVector v = PVector.sub(player.loc, loc).setMag(10);
+        float t = Const.TimeLimit - timeCount / 60;
+        println(t);
+        float m = pow(2, 0.08*t + 2);              //最大で初期速度の3倍にしかならないようにする  また、dv/dtは増加傾向
+                                                                    //計算式:   v = a^(t - b)
+                                                                    
+        PVector v = PVector.sub(player.loc, loc).setMag(m);
         PVector start = PVector.add(loc, v.copy().setMag(r));
         
         Beam beam = new Beam(start, v, Const.BossBeamLength, Const.BossBeamCol);
