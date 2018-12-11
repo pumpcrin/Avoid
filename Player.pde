@@ -9,7 +9,7 @@ class Player{
         void action(PVector p){
           gameOver = true;
           //FireSetup(loc);
-          EfHolder.add(new FireParticleSystem(loc, color(255, 34, 0)));
+          EfHolder.add(new FireParticleSystem(loc, Const.FireCol));
         }
       });
       

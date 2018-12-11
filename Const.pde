@@ -18,6 +18,7 @@ static class Const{
   static final int BossBeamMinVelocity = 5;
   static final int StandardBeamLength = 75;
   
+  static final float WaveEffectSec = 0.7f;
   
   static color ConstColor(int r, int g, int b, int a){
     return (int)((a << 24) | (r << 16) | (g << 8) | b);

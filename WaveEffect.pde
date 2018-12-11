@@ -26,7 +26,7 @@ class WaveEffect extends ParticleSystem{
     };
           
     // このエフェクトが消える処理を実装するのにCollisionをいじらないといけないので、今は時間で消える
-    TiHolder.setTimer(1f, e);
+    TiHolder.setTimer(Const.WaveEffectSec, e);
     //
     
     loc_disp = PVector.sub(loc, new PVector(r, r));  //左上の座標とする

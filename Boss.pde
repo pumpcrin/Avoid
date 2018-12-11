@@ -31,7 +31,7 @@ class Boss{
           };
           
           // このエフェクトが消える処理を実装するのにCollisionをいじらないといけないので、今は時間で消える
-          TiHolder.setTimer(1f, e);
+          TiHolder.setTimer(Const.WaveEffectSec, e);
           //
         }
       });
