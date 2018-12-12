@@ -33,6 +33,18 @@ class Display{
       }
   }
   
+
+  void Title(){
+    textFont(Const.UIFont_Bold);
+    textAlign(CENTER,BASELINE);
+    fill(Const.Titlecol);
+    textSize(200);
+    text("Avoid", width/2, height/2-50);
+    
+    
+    pressanyKey("Space",width/2,height/2+70);
+  }
+  
   void Explain(){
     textFont(Const.UIFont_Bold);
     textAlign(CENTER,TOP);
@@ -53,8 +65,8 @@ class Display{
     
     
     imageMode(CENTER);
-    image(Const.moreBeam,width/4,height/5*3,800,500);
-    image(Const.onlyBeam,width/4*3,height/5*3,800,500);
+    image(Media.moreBeam,width/4,height/5*3,800,500);
+    image(Media.onlyBeam,width/4*3,height/5*3,800,500);
     
     
     

@@ -7,11 +7,11 @@ class Title extends Scene {
   void setup() {
     gameMode = 0;
     
-    if(Audioplayer != null)  Audioplayer.close();
-    Audioplayer = minim.loadFile("title.mp3");
-    Audioplayer.play();
-    BGMGain = Audioplayer.getGain() - 20;
-    Audioplayer.setGain(BGMGain);
+    if(Media.Audioplayer != null)  Media.Audioplayer.close();
+    Media.Audioplayer = minim.loadFile("title.mp3");
+    Media.Audioplayer.play();
+    BGMGain = Media.Audioplayer.getGain() - 10;
+    Media.Audioplayer.setGain(BGMGain);
     //Audioplayer.printControls();
     
     TiHolder = new TimerHolder();
@@ -19,27 +19,20 @@ class Title extends Scene {
   }
 
   void draw() {
-    textFont(Const.UIFont_Bold);
-    textAlign(CENTER,BASELINE);
-    fill(244, 69, 66);
-    textSize(200);
-    text("Avoid", width/2, height/2-50);
-    
-    
-    display.pressanyKey("Space",width/2,height/2+70);
+    display.Title();
   }
 }
 
 class explanation extends Scene {
   void setup(){
-    Const.onlyBeam.loop();
-    Const.moreBeam.loop();
+    Media.onlyBeam.loop();
+    Media.moreBeam.loop();
     
-    if(Audioplayer != null)  Audioplayer.close();
-    Audioplayer = minim.loadFile("ex.mp3");
-    Audioplayer.loop();
-    BGMGain = Audioplayer.getGain() - 20;
-    Audioplayer.setGain(BGMGain);
+    if(Media.Audioplayer != null)  Media.Audioplayer.close();
+    Media.Audioplayer = minim.loadFile("ex.mp3");
+    Media.Audioplayer.loop();
+    BGMGain = Media.Audioplayer.getGain() - 10;
+    Media.Audioplayer.setGain(BGMGain);
   }
   
   void draw(){
@@ -49,8 +42,8 @@ class explanation extends Scene {
 
 class Game extends Scene {
   void setup() {
-    Const.onlyBeam.stop();
-    Const.moreBeam.stop();
+    Media.onlyBeam.stop();
+    Media.moreBeam.stop();
     
     CoMane = new CollisionManager();
     BeMane = new BeamManager();
@@ -58,11 +51,11 @@ class Game extends Scene {
     player = new Player();
     
     //以下，BGM
-    if(Audioplayer != null)  Audioplayer.close();
-    Audioplayer = minim.loadFile("battle"+int(random(2,3.9))+".mp3");
-    Audioplayer.play();
-    BGMGain = Audioplayer.getGain() - 20;
-    Audioplayer.setGain(BGMGain);
+    if(Media.Audioplayer != null)  Media.Audioplayer.close();
+    Media.Audioplayer = minim.loadFile("battle"+int(random(2,3.9))+".mp3");
+    Media.Audioplayer.play();
+    BGMGain = Media.Audioplayer.getGain() - 10;
+    Media.Audioplayer.setGain(BGMGain);
     
     timeCount = Const.TimeLimit * 60; //ゲーム時間をセット(フレーム単位)
     _timeCount = timeCount;
@@ -107,11 +100,11 @@ class Result extends Scene {
     gameMode = 2;
     
     //以下，BGM
-    if(Audioplayer != null)  Audioplayer.close();
-    Audioplayer = minim.loadFile("result.mp3");
-    Audioplayer.loop();
-    BGMGain = Audioplayer.getGain() - 20;
-    Audioplayer.setGain(BGMGain);
+    if(Media.Audioplayer != null)  Media.Audioplayer.close();
+    Media.Audioplayer = minim.loadFile("result.mp3");
+    Media.Audioplayer.loop();
+    BGMGain = Media.Audioplayer.getGain() - 10;
+    Media.Audioplayer.setGain(BGMGain);
   }
 
   void draw() {

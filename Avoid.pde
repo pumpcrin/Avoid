@@ -1,6 +1,5 @@
 import ddf.minim.*;
 Minim minim;
-AudioPlayer Audioplayer;
 float BGMGain;
 
 import java.math.*;
@@ -34,15 +33,16 @@ void setup() {
   Const.UIFont_Bold = loadFont("Blanka-Regular-250.vlw");
   Const.UIFont_semiBold = loadFont("Blanka-Regular-250.vlw");
   Const.Japanese = loadFont("851H-kktt-100.vlw");
-  Const.moreBeam = new Movie(this, "moreBeam.mp4");
-  Const.onlyBeam = new Movie(this, "onlyBeam.mp4");
+  Media.moreBeam = new Movie(this, "moreBeam.mp4");
+  Media.onlyBeam = new Movie(this, "onlyBeam.mp4");
+  //Media.shoot = minim.loadFile("Shot.mp3");
   
   minim = new Minim(this);
   
   //size(1500, 1000);
   fullScreen();
   background(0);
-  frameRate(1000);
+  frameRate(60);
   smooth();
   
   scene.setup();
@@ -91,7 +91,8 @@ void movieEvent(Movie m){
 
 
 void stop(){
-  if(Audioplayer != null)  Audioplayer.close();
+  if(Media.Audioplayer != null)  Media.Audioplayer.close();
+  if(Media.shoot != null)  Media.shoot.close();
   minim.stop();
   super.stop();
 }

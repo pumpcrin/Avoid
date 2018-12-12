@@ -1,6 +1,4 @@
 static class Const{
-  static Movie moreBeam;
-  static Movie onlyBeam;
   
   static PFont UIFont_Bold;
   static PFont UIFont_semiBold;
@@ -22,6 +20,8 @@ static class Const{
   
   static final float WaveEffectSec = 0.7f;
   
+  static final color Titlecol = ConstColor(244, 69, 66);
+  
   static color ConstColor(int r, int g, int b, int a){
     return (int)((a << 24) | (r << 16) | (g << 8) | b);
   }
@@ -37,4 +37,15 @@ static class Const{
     double numAfter = numDecAfter.doubleValue();
     return numAfter;
   }
+}
+
+
+static class Media{
+  
+  static Movie moreBeam;
+  static Movie onlyBeam;
+  
+  static AudioPlayer Audioplayer;
+  static AudioPlayer shoot;
+  
 }
