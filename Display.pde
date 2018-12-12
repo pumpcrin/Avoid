@@ -67,7 +67,8 @@ class Display{
     imageMode(CENTER);
     image(Media.moreBeam,width/4,height/5*3,800,500);
     image(Media.onlyBeam,width/4*3,height/5*3,800,500);
-    
+    g.removeCache(Media.moreBeam);
+    g.removeCache(Media.onlyBeam);
     
     
     textAlign(RIGHT,BOTTOM);

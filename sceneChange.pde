@@ -4,7 +4,10 @@ void sceneChange() {
   //if (key == ' '){
     //nowFadeout = true;
 
-    if (scene instanceof Title) {
+    if (scene instanceof Opening) {
+        scene = new Title();
+        scene.setup();
+    } else if (scene instanceof Title) {
         scene = new explanation();
         scene.setup();
     } else if (scene instanceof explanation){
@@ -14,7 +17,7 @@ void sceneChange() {
         scene = new Result();
         scene.setup();
     } else if (scene instanceof Result){
-        scene = new Title();
+        scene = new Opening();
         scene.setup();
     }
   //}

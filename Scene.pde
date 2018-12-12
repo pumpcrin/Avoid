@@ -2,20 +2,38 @@ abstract class Scene {
   abstract void setup();
   abstract void draw();
 }
+class Opening extends Scene {
+  void setup(){
+    if(Media.Audioplayer != null)  Media.Audioplayer.close();
+    
+    Media.opening.play();
+    Media.opening.frameRate(29.97);
+    
+    TiHolder = new TimerHolder();
+    EfHolder = new EffectHolder();
+  }
+  void draw(){
+    image(Media.opening,0,0,width,height);
+    
+    g.removeCache(Media.opening);
+    
+    textAlign(RIGHT,BOTTOM);
+    //display.pressanyKey("Space",width,height);
+    if(Media.opening.available())  sceneChange();
+  }
+}
 
 class Title extends Scene {
   void setup() {
     gameMode = 0;
     
+    Media.opening.stop();
     if(Media.Audioplayer != null)  Media.Audioplayer.close();
     Media.Audioplayer = minim.loadFile("title.mp3");
     Media.Audioplayer.play();
     BGMGain = Media.Audioplayer.getGain() - 10;
     Media.Audioplayer.setGain(BGMGain);
     //Audioplayer.printControls();
-    
-    TiHolder = new TimerHolder();
-    EfHolder = new EffectHolder();
   }
 
   void draw() {
@@ -97,6 +115,7 @@ class Game extends Scene {
 
 class Result extends Scene {
   void setup() {
+    
     gameMode = 2;
     
     //以下，BGM

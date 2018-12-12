@@ -44,6 +44,7 @@ static class Media{
   
   static Movie moreBeam;
   static Movie onlyBeam;
+  static Movie opening;
   
   static AudioPlayer Audioplayer;
   static AudioPlayer shoot;

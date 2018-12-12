@@ -7,7 +7,7 @@ import java.math.*;
 import processing.video.*;
 
 //シーン
-Scene scene = new Title();
+Scene scene = new Opening();
 Display display = new Display();
 
 //以下，システム関連宣言
@@ -35,12 +35,13 @@ void setup() {
   Const.Japanese = loadFont("851H-kktt-100.vlw");
   Media.moreBeam = new Movie(this, "moreBeam.mp4");
   Media.onlyBeam = new Movie(this, "onlyBeam.mp4");
+  Media.opening = new Movie(this, "title.mp4");
   //Media.shoot = minim.loadFile("Shot.mp3");
   
   minim = new Minim(this);
   
   //size(1500, 1000);
-  fullScreen();
+  fullScreen(P2D);
   background(0);
   frameRate(60);
   smooth();
@@ -82,7 +83,7 @@ void keyPressed() {
 
 void keyReleased(){
   if(key == 'D')  Const.debug = !(Const.debug);
-  else if((key == ENTER) && (Const.debug))  gameOver = true;
+  else if((key == ENTER) && (Const.debug))  gameOver = !(gameOver);
 }
 
 void movieEvent(Movie m){
