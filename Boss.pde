@@ -110,7 +110,7 @@ class Boss{
     textAlign(CENTER, CENTER);
     text(holdBeams, 0, 0);
     
-    //DEffects.update();
+    Effects.update();
     
     /*
     noStroke();

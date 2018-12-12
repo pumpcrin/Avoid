@@ -42,7 +42,7 @@ void setup() {
   //size(1500, 1000);
   fullScreen();
   background(0);
-  frameRate(60);
+  frameRate(1000);
   smooth();
   
   scene.setup();

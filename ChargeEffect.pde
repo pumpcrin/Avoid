@@ -21,6 +21,8 @@ class Charge_Particle{
   Charge_Particle(PVector _loc_start, PVector _loc_end, color _baseCol, int _particleSize, boolean _finish){
     loc_now = _loc_start.copy();
     loc_end = _loc_end.copy();
+    loc_end.x = loc_end.x + 17;
+    loc_end.y = loc_end.y + 17;
     particleSize = _particleSize;
     finish = _finish;
     
@@ -38,7 +40,7 @@ class Charge_Particle{
     
     vector();
     loc_now.add(v);
-    r = particleSize * (lifeSpan_s * frameRate) / lifeCounter;
+    r = particleSize;// * (lifeSpan_s * frameRate) / lifeCounter;
     
     if(!finish)
       lifeCounter--;
@@ -56,7 +58,7 @@ class Charge_Particle{
       v.setMag(m);
     }else{
       //sec++;
-      m = v.mag() / 400;
+      m = v.mag() / 200;
       v.setMag(m);
     }
   }
@@ -73,7 +75,7 @@ class Charge_Particle{
 }
 
 class Charge extends ParticleSystem{
-  static final int particleAmount = 100;
+  static final int particleAmount = 50;
   static final float fireSpan_s = 3; //fire effect time
   
   PVector loc_h;        //発射点
@@ -133,11 +135,11 @@ class Charge extends ParticleSystem{
 
     if (parts.size() < particleAmount){
       if(!finish){
-        createParticle(2,80);
-        createParticle(5,50);
-        createParticle(10,20);
+        createParticle(10,100);
+        createParticle(15,80);
+        createParticle(30,20);
       }else{
-        createFire(5,100);
+        createFire(5,10);
       }
     }
   }
@@ -167,24 +169,10 @@ class Charge extends ParticleSystem{
     float firerange = r * 20;              //横の範囲
     
     noFill();
+     
+    loc_end = new PVector(random(-width/5,width/5),random(player.loc.y + height));
     
-    if(loc_ell.y < loc_h.y && loc_ell.x < loc_h.x)
-      loc_end = new PVector(random(loc_h.x, impactrange), random(loc_h.y,impactrange));
-    else if(loc_ell.y < loc_h.y && loc_ell.x > loc_h.x)
-      loc_end = new PVector(random(-impactrange, loc_h.x), random(loc_h.y,impactrange));
-    else if(loc_ell.y > loc_h.y && loc_ell.x < loc_h.x)
-      loc_end = new PVector(random(loc_h.x, impactrange), random(-impactrange, loc_h.y));
-    else if(loc_ell.y > loc_h.y && loc_ell.x > loc_h.x)
-      loc_end = new PVector(random(-impactrange, loc_h.x), random(-impactrange, loc_h.y));
-    else if(loc_ell.y == loc_h.y && loc_ell.x < loc_h.x)
-      loc_end = new PVector(random(loc_h.x, impactrange), random(loc_h.y - firerange, loc_h.y + firerange));
-    else if(loc_ell.y == loc_h.y && loc_ell.x > loc_h.x)
-      loc_end = new PVector(random(-impactrange, loc_h.x), random(loc_h.y - firerange, loc_h.y + firerange));
-    else if(loc_ell.y < loc_h.y && loc_ell.x == loc_h.x)
-      loc_end = new PVector(random(loc_h.x - firerange, loc_h.x + firerange), random(loc_h.y, impactrange));
-    else if(loc_ell.y > loc_h.y && loc_ell.x == loc_h.x)
-      loc_end = new PVector(random(loc_h.x -firerange, loc_h.x + firerange), random(-impactrange, loc_h.y));
-      
+     
     parts.add(new Charge_Particle(loc_h, loc_end, col, particleSize,finish));
     
   }
