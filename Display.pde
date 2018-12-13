@@ -56,7 +56,7 @@ class Display{
     textFont(Const.Japanese);
     fill(255);
     textSize(80);
-    text("つぎつぎととんでくるビームをよけよう",width/2,175);
+    text("つぎつぎととんでくるビームをマウスでよけよう",width/2,175);
     
     textSize(50);
     text("ビームはがめんがいからとんでくるぞ",width/4,height/5*1.5);
