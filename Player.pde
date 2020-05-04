@@ -28,7 +28,8 @@ class Player{
       loc = new PVector(mouseX, mouseY);
   
     //自機描画
-    fill(111, 186, 0);
+    //fill(111, 186, 0);
+    fill(255, 255, 0);
     ellipse(loc.x, loc.y, _R*2, _R*2);
   }
   
